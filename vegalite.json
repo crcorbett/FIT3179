@@ -1,36 +1,198 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
-  "width": 500,
-  "height": 300,
-  "layer": [
+  "data":{
+      "url":"https://raw.githubusercontent.com/crcorbett/FIT3179/master/data.json"
+    },
+  "title": "Melbourne",
+  "columns": 2,
+  "concat": [
     {
-        "data": {"url": "https://raw.githubusercontent.com/crcorbett/FIT3179/master/ABS_SA2_2011-2.json",
-        "format": {
-          "type": "topojson",
-          "feature": "ABS_SA2_2011"
-        }
+      "layer":[
+        {
+        "data": {
+          "url": "https://raw.githubusercontent.com/crcorbett/FIT3179/master/ABS_SA2_2011-3.json",
+          "format": {
+            "type": "topojson",
+            "feature": "ABS_SA2_2011"
+          }
         },
-      "mark": {
-        "type": "geoshape",
-        "fill": "lightgray",
-        "stroke": "black"
+        "projection": {
+          "type": "equirectangular"
+        },
+        "mark": {
+          "type": "geoshape",
+          "fill": "lightgray",
+          "stroke": "white"
+        },
+        "height": 400,
+        "width": 400,
+        "title": "2019 Melbourne"
+      },
+      {
+        "selection": {
+          "Date": {
+            "type": "single",
+            "fields": [
+              "Day"
+            ],
+            "init": {
+              "Day": 1,
+              "Year": "2019"
+            },
+            "bind": {
+              "Day": {
+                "input": "range",
+                "min": 1,
+                "max": 31,
+                "step": 1
+              }
+            }
+          },
+          "Location":{
+            "type":"single",
+            "fields":["Location"],
+            "on":"click"
+          }
+        },
+        "transform": [
+          {
+            "filter": {
+              "selection": "Date"
+            }
+          },
+          {
+            "filter":"datum.Year == 2019"
+          }
+        ],
+        "mark": {
+          "type": "circle",
+          "size": 100,
+          "fillOpacity":0.5,
+          "stroke":"black",
+          "strokeOpacity":0.2
+        },
+        "encoding": {
+          "longitude": {
+            "field": "longitude",
+            "type": "quantitative"
+          },
+          "latitude": {
+            "field": "latitude",
+            "type": "quantitative"
+          },
+          "color": {
+            "condition":{
+              "selection":"Location",
+              "field":"Normalised",
+              "type": "quantitative",
+            "scale": {
+              "scheme": "reds"
+            },
+            "legend": {
+              "orient": "right"
+            }
+            },
+            "value":"grey"
+          },
+            "tooltip":[
+              {"field":"Location"},
+              {"field":"Day"},
+              {"field":"Year"},
+              {"field":"Normalised"},
+              {"field":"Count"}
+              ]
+        }
       }
+      ]
     },
     {
-      "data": {
-        "url": "https://raw.githubusercontent.com/crcorbett/FIT3179/master/data.json"
-    },
-    "mark": {"type": "circle", "fillOpacity": 0.5, "size": 100},
-    "encoding": {
-    "longitude": {"field": "longitude", "type": "quantitative"},
-    "latitude": {"field": "latitude", "type": "quantitative"},
-    "color": {
-      "field": "Location",
-      "type": "nominal",
-      "legend": {"orient": "left"}
+      "layer":[
+      {
+        "data": {
+          "url": "https://raw.githubusercontent.com/crcorbett/FIT3179/master/ABS_SA2_2011-3.json",
+          "format": {
+            "type": "topojson",
+            "feature": "ABS_SA2_2011"
+          }
+        },
+        "projection": {
+          "type": "equirectangular"
+        },
+        "mark": {
+          "type": "geoshape",
+          "fill": "lightgray",
+          "stroke": "white"
+        },
+        "height": 400,
+        "width": 400,
+        "title": "2020 Melbourne"
+      },
+      {
+        "selection": {
+          "Location":{
+            "type":"single",
+            "fields":["Location"],
+            "on":"click"
+          }
+        },
+        "transform": [
+          {
+            "filter": {
+              "selection": "Date"
+            }
+          },
+          {
+            "filter":"datum.Year == 2020"
+          }
+        ],
+        "mark": {
+          "type": "circle",
+          "size": 100,
+          "fillOpacity":0.5,
+          "stroke":"black",
+          "strokeOpacity":0.2
+        },
+        "encoding": {
+          "longitude": {
+            "field": "longitude",
+            "type": "quantitative"
+          },
+          "latitude": {
+            "field": "latitude",
+            "type": "quantitative"
+          },
+          "color": {
+            "condition":{
+              "selection":"Location",
+              "field":"Normalised",
+              "type": "quantitative",
+              "scale": {
+                "scheme": "reds"
+              },
+              "legend": {
+                "orient": "right"
+              }
+            },
+            "value":"grey"
+          },
+            "tooltip":[
+              {"field":"Location"},
+              {"field":"Day"},
+              {"field":"Year"},
+              {"field":"Normalised"},
+              {"field":"Count"}
+              ]
+        }
       }
-    }
+      ]
+    },
+    {
+      "layer":[
+        {
+          "title":"Graph",
+          "mark":"circle"
+        }
+      ]
     }
   ]
- 
 }
