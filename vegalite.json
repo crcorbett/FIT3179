@@ -1,9 +1,9 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
   "data":{
-      "url":"https://raw.githubusercontent.com/crcorbett/FIT3179/master/data.json"
+      "url":"https://raw.githubusercontent.com/crcorbett/FIT3179/master/data%20copy.json"
     },
-  "title": "Melbourne",
+  "title": {"text": "Melbourne Pedestrian Traffic", "fontSize":40, "subtitle":""},
   "columns": 2,
   "concat": [
     {
@@ -26,18 +26,19 @@
         },
         "height": 400,
         "width": 400,
-        "title": "2019 Melbourne"
+        "title": "May 2019"
       },
       {
         "selection": {
           "Date": {
             "type": "single",
             "fields": [
-              "Day"
+              "Day",
+              "Hour"
             ],
             "init": {
-              "Day": 1,
-              "Year": "2019"
+              "Day": 21,
+              "Hour": 17
             },
             "bind": {
               "Day": {
@@ -45,6 +46,13 @@
                 "min": 1,
                 "max": 31,
                 "step": 1
+              },
+              "Hour":{
+                "input": "range",
+                "min": 0,
+                "max": 23,
+                "step":1,
+                "type": "nominal"
               }
             }
           },
@@ -66,10 +74,8 @@
         ],
         "mark": {
           "type": "circle",
-          "size": 100,
-          "fillOpacity":0.5,
-          "stroke":"black",
-          "strokeOpacity":0.2
+          "size": 150,
+          "opacity":1
         },
         "encoding": {
           "longitude": {
@@ -85,12 +91,13 @@
               "selection":"Location",
               "field":"Normalised",
               "type": "quantitative",
-            "scale": {
-              "scheme": "reds"
-            },
-            "legend": {
-              "orient": "right"
-            }
+              "scale": {
+                "scheme": "reds",
+                "domain":[0,1]
+              },
+              "legend": {
+                "orient": "right"
+              }
             },
             "value":"grey"
           },
@@ -125,7 +132,7 @@
         },
         "height": 400,
         "width": 400,
-        "title": "2020 Melbourne"
+        "title": "May 2020"
       },
       {
         "selection": {
@@ -147,10 +154,8 @@
         ],
         "mark": {
           "type": "circle",
-          "size": 100,
-          "fillOpacity":0.5,
-          "stroke":"black",
-          "strokeOpacity":0.2
+          "size": 150,
+          "opacity":1
         },
         "encoding": {
           "longitude": {
@@ -170,6 +175,8 @@
                 "scheme": "reds"
               },
               "legend": {
+                "title": ["Normalised","Pedestrian Count"],
+                "titleAlign":"center",
                 "orient": "right"
               }
             },
@@ -184,14 +191,6 @@
               ]
         }
       }
-      ]
-    },
-    {
-      "layer":[
-        {
-          "title":"Graph",
-          "mark":"circle"
-        }
       ]
     }
   ]
