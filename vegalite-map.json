@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
   "data":{
-      "url":"https://raw.githubusercontent.com/crcorbett/FIT3179/master/data%20copy.json"
+      "url":"https://raw.githubusercontent.com/crcorbett/FIT3179/master/data/data.json"
     },
   "title": {"text": "Melbourne Pedestrian Traffic", "fontSize":40, "subtitle":""},
   "columns": 2,
@@ -10,7 +10,7 @@
       "layer":[
         {
         "data": {
-          "url": "https://raw.githubusercontent.com/crcorbett/FIT3179/master/ABS_SA2_2011-3.json",
+          "url": "https://raw.githubusercontent.com/crcorbett/FIT3179/master/data/map.json",
           "format": {
             "type": "topojson",
             "feature": "ABS_SA2_2011"
@@ -116,7 +116,7 @@
       "layer":[
       {
         "data": {
-          "url": "https://raw.githubusercontent.com/crcorbett/FIT3179/master/ABS_SA2_2011-3.json",
+          "url": "https://raw.githubusercontent.com/crcorbett/FIT3179/master/data/map.json",
           "format": {
             "type": "topojson",
             "feature": "ABS_SA2_2011"
