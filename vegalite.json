@@ -1,0 +1,36 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "width": 500,
+  "height": 300,
+  "layer": [
+    {
+        "data": {"url": "https://raw.githubusercontent.com/crcorbett/FIT3179/master/ABS_SA2_2011-2.json",
+        "format": {
+          "type": "topojson",
+          "feature": "ABS_SA2_2011"
+        }
+        },
+      "mark": {
+        "type": "geoshape",
+        "fill": "lightgray",
+        "stroke": "black"
+      }
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/crcorbett/FIT3179/master/data.json"
+    },
+    "mark": {"type": "circle", "fillOpacity": 0.5, "size": 100},
+    "encoding": {
+    "longitude": {"field": "longitude", "type": "quantitative"},
+    "latitude": {"field": "latitude", "type": "quantitative"},
+    "color": {
+      "field": "Location",
+      "type": "nominal",
+      "legend": {"orient": "left"}
+      }
+    }
+    }
+  ]
+ 
+}
