@@ -1,0 +1,134 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/crcorbett/FIT3179/master/data%20copy.json"
+  },
+  "title": {
+    "text": "Melbourne Pedestrian Traffic",
+    "fontSize": 40,
+    "subtitle": ""
+  },
+  "columns": 2,
+  "concat": [
+    {
+      "layer": [
+        {
+          "data": {
+            "url": "https://raw.githubusercontent.com/crcorbett/FIT3179/master/ABS_SA2_2011-3.json",
+            "format": {"type": "topojson", "feature": "ABS_SA2_2011"}
+          },
+          "projection": {"type": "equirectangular"},
+          "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"},
+          "height": 400,
+          "width": 400,
+          "title": "May 2019"
+        },
+        {
+          "selection": {
+            "Date": {
+              "type": "single",
+              "fields": ["Day", "Hour"],
+              "init": {"Day": 21, "Hour": 17},
+              "bind": {
+                "Day": {"input": "range", "min": 1, "max": 31, "step": 1},
+                "Hour": {
+                  "input": "range",
+                  "min": 0,
+                  "max": 23,
+                  "step": 1,
+                  "type": "nominal"
+                }
+              }
+            },
+            "Location": {
+              "type": "single",
+              "fields": ["Location"],
+              "on": "click"
+            }
+          },
+          "transform": [
+            {"filter": {"selection": "Date"}},
+            {"filter": "datum.Year == 2019"}
+          ],
+          "mark": {"type": "circle", "size": 150, "opacity": 1},
+          "encoding": {
+            "longitude": {"field": "longitude", "type": "quantitative"},
+            "latitude": {"field": "latitude", "type": "quantitative"},
+            "color": {
+              "condition": {
+                "selection": "Location",
+                "field": "Normalised",
+                "type": "quantitative",
+                "scale": {"scheme": "reds", "domain": [0, 1]},
+                "legend": {"orient": "right"}
+              },
+              "value": "grey"
+            },
+            "tooltip": [
+              {"field": "Location"},
+              {"field": "Day"},
+              {"field": "Year"},
+              {"field": "Normalised"},
+              {"field": "Count"}
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "layer": [
+        {
+          "data": {
+            "url": "https://raw.githubusercontent.com/crcorbett/FIT3179/master/ABS_SA2_2011-3.json",
+            "format": {"type": "topojson", "feature": "ABS_SA2_2011"}
+          },
+          "projection": {"type": "equirectangular"},
+          "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"},
+          "height": 400,
+          "width": 400,
+          "title": "May 2020"
+        },
+        {
+          "selection": {
+            "Location": {
+              "type": "single",
+              "fields": ["Location"],
+              "on": "click"
+            }
+          },
+          "transform": [
+            {"filter": {"selection": "Date"}},
+            {"filter": "datum.Year == 2020"}
+          ],
+          "mark": {"type": "circle", "size": 150, "opacity": 1},
+          "encoding": {
+            "longitude": {"field": "longitude", "type": "quantitative"},
+            "latitude": {"field": "latitude", "type": "quantitative"},
+            "color": {
+              "condition": {
+                "selection": "Location",
+                "field": "Normalised",
+                "type": "quantitative",
+                "scale": {"scheme": "reds"},
+                "legend": {
+                  "title": ["Normalised", "Pedestrian Count"],
+                  "titleAlign": "center",
+                  "orient": "right"
+                }
+              },
+              "value": "grey"
+            },
+            "tooltip": [
+              {"field": "Location"},
+              {"field": "Day"},
+              {"field": "Year"},
+              {"field": "Normalised"},
+              {"field": "Count"}
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "config": {}
+}
