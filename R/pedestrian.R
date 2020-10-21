@@ -35,6 +35,7 @@ summ_ped_data <- summ_ped_data %>% group_by(Location) %>% mutate(Normalised = mi
 summ_ped_data <- summ_ped_data %>% group_by(Year, Location) %>% mutate(month_mean = mean(Count, na.rm=TRUE), month_count=sum(Count, na.rm = TRUE))
 summ_ped_data <- summ_ped_data %>% group_by(Year, Location, Hour) %>% mutate(hour_mean = mean(Count, na.rm=TRUE), hour_count=sum(Count, na.rm = TRUE))
 summ_ped_data <- summ_ped_data %>% group_by(Year, Location, Day) %>% mutate(day_mean = mean(Count, na.rm=TRUE), day_count=sum(Count, na.rm = TRUE))
+summ_ped_data <- summ_ped_data %>% group_by(Year, Location, Day, Hour) %>% mutate(day_hour_mean = mean(Count, na.rm=TRUE), day_hour_count=sum(Count, na.rm = TRUE))
 summ_ped_data <- summ_ped_data %>% group_by(Location) %>% mutate(location_max = max(Count, na.rm=TRUE), location_min = min(Count, na.rm=TRUE))                                  
 
 top_locations <- summ_ped_data %>% 
