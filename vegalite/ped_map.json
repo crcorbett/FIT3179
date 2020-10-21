@@ -1,16 +1,17 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
   "data":{
-      "url":"https://raw.githubusercontent.com/crcorbett/FIT3179/master/data/data.json"
+      "url":"https://raw.githubusercontent.com/crcorbett/FIT3179/master/data/ped_data.json"
     },
   "title": {"text": "Melbourne Pedestrian Traffic", "fontSize":40, "subtitle":""},
-  "columns": 2,
-  "concat": [
+  "vconcat" :[
+    {  
+      "hconcat": [
     {
       "layer":[
         {
         "data": {
-          "url": "https://raw.githubusercontent.com/crcorbett/FIT3179/master/data/map.json",
+          "url": "https://raw.githubusercontent.com/crcorbett/FIT3179-Week-9/main/data/map.json",
           "format": {
             "type": "topojson",
             "feature": "ABS_SA2_2011"
@@ -26,33 +27,44 @@
         },
         "height": 400,
         "width": 400,
-        "title": "May 2019"
+        "title": "July 2019"
       },
       {
         "selection": {
           "Date": {
             "type": "single",
             "fields": [
-              "Day",
-              "Hour"
+              "Mdate"
             ],
             "init": {
-              "Day": 21,
-              "Hour": 17
+              "Mdate": 21
             },
             "bind": {
-              "Day": {
+              "Mdate": {
                 "input": "range",
                 "min": 1,
                 "max": 31,
-                "step": 1
-              },
+                "step": 1,
+                "name": "Day"
+              }
+            }
+          },
+          "Hour": {
+            "type": "single",
+            "fields": [
+              "Hour"
+            ],
+            "init": {
+              "Hour": 17
+            },
+            "bind": {
               "Hour":{
                 "input": "range",
                 "min": 0,
                 "max": 23,
                 "step":1,
-                "type": "nominal"
+                "type": "nominal",
+                "name": "Hour"
               }
             }
           },
@@ -70,11 +82,16 @@
           },
           {
             "filter":"datum.Year == 2019"
+          },
+          {
+            "filter": {
+              "selection": "Hour"
+            }
           }
         ],
         "mark": {
           "type": "circle",
-          "size": 150,
+          "size": 100,
           "opacity":1
         },
         "encoding": {
@@ -103,7 +120,7 @@
           },
             "tooltip":[
               {"field":"Location"},
-              {"field":"Day"},
+              {"field":"Mdate"},
               {"field":"Year"},
               {"field":"Normalised"},
               {"field":"Count"}
@@ -116,7 +133,7 @@
       "layer":[
       {
         "data": {
-          "url": "https://raw.githubusercontent.com/crcorbett/FIT3179/master/data/map.json",
+          "url": "https://raw.githubusercontent.com/crcorbett/FIT3179-Week-9/main/data/map.json",
           "format": {
             "type": "topojson",
             "feature": "ABS_SA2_2011"
@@ -132,7 +149,7 @@
         },
         "height": 400,
         "width": 400,
-        "title": "May 2020"
+        "title": "July 2020"
       },
       {
         "selection": {
@@ -150,11 +167,16 @@
           },
           {
             "filter":"datum.Year == 2020"
+          },
+          {
+            "filter": {
+              "selection": "Hour"
+            }
           }
         ],
         "mark": {
           "type": "circle",
-          "size": 150,
+          "size": 100,
           "opacity":1
         },
         "encoding": {
@@ -194,4 +216,127 @@
       ]
     }
   ]
+  },
+  {
+    "layer": [ 
+    {
+      "title":"Pedestrian count daily",
+    "transform": [
+      {
+            "filter": {
+              "selection": "Date"
+            }
+          },
+    {
+      "filter": {
+        "selection": "Location"
+      }
+    }
+  ],
+    "width": 800,
+    "mark": "line",
+    "encoding": {
+      "x":{"field":"Hour", "type": "ordinal"},
+      "y":{"aggregate":"sum","field":"Count", "type": "quantitative", "axis":   {"title":"Total Pedestrians"}},
+      "color":{"field":"Year"},
+      "opacity":{"value":0.7}
+    }
+    },
+    {
+      "transform": [
+        {
+          "filter": {
+            "selection": "Hour"
+            }
+          },
+          {
+            "filter": {
+              "selection": "Date"
+            }
+          },
+          {
+          "filter": {
+            "selection": "Location"
+          }
+        }
+      ],
+      "mark":"rule",
+      "encoding": {
+        "x":{"field":"Hour"},
+        "color":{"value":"grey"},
+        "opacity":{"value":0.5},
+        "strokeDash":{"value":[4,4]}
+      },
+      "selection": {
+        "highlighted": {
+          "type": "single",
+          "on": "mouseover",
+          "encodings": ["x"],
+          "empty": "none",
+          "nearest": true
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+            "filter": {
+              "selection": "Date"
+            }
+          },
+          {
+            "filter": {
+              "selection": "Hour"
+            }
+          },
+        {
+          "filter": {
+            "selection": "Location"
+          }
+        }
+      ],
+      "mark":"circle",
+      "encoding": {
+        "x":{"field":"Hour"},
+        "y":{"field":"Count", "aggregate":"sum"},
+        "color":{"field":"Year"},
+        "size":{"value":100}
+      }
+    },
+    {
+      "transform": [
+        {
+            "filter": {
+              "selection": "Date"
+            }
+          },
+          {
+            "filter": {
+              "selection": "Hour"
+            }
+          },
+        {
+          "filter": {
+            "selection": "Location"
+          }
+        }
+      ],
+      "mark":{
+        "type":"text",
+        "align":"left",
+        "dx":10,
+        "dy":-10
+        },
+      "encoding": {
+        "x":{"field":"Hour"},
+        "color":{"field":"Year"},
+        "y":{"field":"Count", "aggregate":"sum"},
+        "text":{"field":"Count", "aggregate":"sum"},
+        "size":{"value":15}
+      }
+    }
+    ]
+  }
+    
+    ]
 }
