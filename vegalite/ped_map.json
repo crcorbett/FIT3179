@@ -91,8 +91,9 @@
         ],
         "mark": {
           "type": "circle",
-          "size": 100,
-          "opacity":1
+          "size": 80,
+          "stroke":"white",
+          "opacity":0.8
         },
         "encoding": {
           "longitude": {
@@ -176,8 +177,9 @@
         ],
         "mark": {
           "type": "circle",
-          "size": 100,
-          "opacity":1
+          "size": 80,
+          "opacity":0.8,
+          "stroke":"white"
         },
         "encoding": {
           "longitude": {
@@ -238,7 +240,7 @@
     "encoding": {
       "x":{"field":"Hour", "type": "ordinal"},
       "y":{"aggregate":"sum","field":"Count", "type": "quantitative", "axis":   {"title":"Total Pedestrians"}},
-      "color":{"field":"Year"},
+      "color":{"field":"Year", "scale": {"range": ["#de2d26", "#fc9272", "grey"]}},
       "opacity":{"value":0.7}
     }
     },
@@ -266,15 +268,6 @@
         "color":{"value":"grey"},
         "opacity":{"value":0.5},
         "strokeDash":{"value":[4,4]}
-      },
-      "selection": {
-        "highlighted": {
-          "type": "single",
-          "on": "mouseover",
-          "encodings": ["x"],
-          "empty": "none",
-          "nearest": true
-        }
       }
     },
     {
@@ -333,6 +326,35 @@
         "y":{"field":"Count", "aggregate":"sum"},
         "text":{"field":"Count", "aggregate":"sum"},
         "size":{"value":15}
+      }
+    },
+    {
+      "transform": [
+        {
+            "filter": {
+              "selection": "Date"
+            }
+          },
+  
+        {
+          "filter": {
+            "selection": "Location"
+          }
+        },
+        {
+            "filter":"datum.Year == 2019"
+          }
+      ],
+      "mark":{
+        "type":"line",
+        "strokeWidth":2,
+        "opacity":0.5
+        },
+      "encoding": {
+        "x":{"field":"Hour"},
+        "y":{"field":"day_hour_mean","type":"quantitative"},
+        "color":{"datum":"2019 Average", "type": "nominal"},
+        "strokeDash":{"value":[2,2]}
       }
     }
     ]

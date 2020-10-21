@@ -13,7 +13,7 @@ ped_sensor_locations <- as_tibble(read.csv('Data/Pedestrian/Pedestrian_Counting_
 ped_sensor_locations <- ped_sensor_locations %>% select(sensor_id, latitude, longitude)
 
 # Read in .csv data - data from Melbourne Open Data portal
-ped_data <- as_tibble(read.csv('Data/Pedestrian/pedestrian_data.csv')) %>% filter(Year %in% c(2019, 2020)) %>% filter(Month=='July')
+ped_data <- as_tibble(read.csv('Data/Pedestrian/pedestrian_data.csv')) %>% filter(Year %in% c(2019, 2020)) #%>% filter(Month=='July')
 ped_data<- as_tibble(merge(ped_data, ped_sensor_locations, by.x="Sensor_ID", by.y = "sensor_id"))
 
 # Pedestrian data
@@ -48,7 +48,7 @@ top_locations <- summ_ped_data %>%
   select(Location)
 
 # Filter list to top 30 locations in 2019
-summ_ped_data <- summ_ped_data %>% filter(Location %in% top_locations$Location)
+summ_ped_data <- summ_ped_data %>% filter(Location %in% top_locations$Location) %>% filter(Month=='July')
 
 
 serialised <- toJSON(summ_ped_data)
