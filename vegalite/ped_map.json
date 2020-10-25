@@ -301,7 +301,7 @@
     "encoding": {
       "x":{"field":"Hour", "type": "ordinal"},
       "y":{"aggregate":"sum","field":"Count", "type": "quantitative", "axis":   {"title":"Total Pedestrians"}},
-      "color":{"field":"Year", "scale": {"range": ["#de2d26", "#fc9272", "grey"]}},
+      "color":{"field":"Year", "scale": {"range": ["#de2d26", "#fc9272", "#d1d1d1"]}},
       "opacity":{"value":0.95}
     }
     },
@@ -409,7 +409,7 @@
       "mark":{
         "type":"line",
         "strokeWidth":2,
-        "opacity":0.5
+        "opacity":1
         },
       "encoding": {
         "x":{"field":"Hour"},
