@@ -69,9 +69,11 @@
             }
           },
           "Location":{
-            "type":"single",
+            "type":"multi",
             "fields":["Location"],
-            "on":"click"
+            "on":"click",
+            "empty": "all",
+            "init": {"Location":["Collins Place (North)", "Bourke St Bridge", "Southbank"]}
           }
         },
         "transform": [
@@ -91,9 +93,8 @@
         ],
         "mark": {
           "type": "circle",
-          "size": 80,
           "stroke":"white",
-          "opacity":0.8
+          "opacity":1
         },
         "encoding": {
           "longitude": {
@@ -119,9 +120,16 @@
             },
             "value":"grey"
           },
+          "size": {
+            "condition":{
+              "selection":"Location",
+              "value":150
+            },
+            "value":80
+          },
             "tooltip":[
               {"field":"Location"},
-              {"field":"Mdate"},
+              {"field":"Day"},
               {"field":"Year"},
               {"field":"Normalised"},
               {"field":"Count"}
@@ -157,7 +165,8 @@
           "Location":{
             "type":"single",
             "fields":["Location"],
-            "on":"click"
+            "on":"click",
+            "empty": "all"
           }
         },
         "transform": [
@@ -177,8 +186,7 @@
         ],
         "mark": {
           "type": "circle",
-          "size": 80,
-          "opacity":0.8,
+          "opacity":1,
           "stroke":"white"
         },
         "encoding": {
@@ -205,6 +213,13 @@
               }
             },
             "value":"grey"
+          },
+          "size": {
+            "condition":{
+              "selection":"Location",
+              "value":150
+            },
+            "value":80
           },
             "tooltip":[
               {"field":"Location"},
@@ -241,7 +256,7 @@
       "x":{"field":"Hour", "type": "ordinal"},
       "y":{"aggregate":"sum","field":"Count", "type": "quantitative", "axis":   {"title":"Total Pedestrians"}},
       "color":{"field":"Year", "scale": {"range": ["#de2d26", "#fc9272", "grey"]}},
-      "opacity":{"value":0.7}
+      "opacity":{"value":0.95}
     }
     },
     {
@@ -265,7 +280,7 @@
       "mark":"rule",
       "encoding": {
         "x":{"field":"Hour"},
-        "color":{"value":"grey"},
+        "color":{"value":"black"},
         "opacity":{"value":0.5},
         "strokeDash":{"value":[4,4]}
       }
@@ -352,8 +367,10 @@
         },
       "encoding": {
         "x":{"field":"Hour"},
-        "y":{"field":"day_hour_mean","type":"quantitative"},
-        "color":{"datum":"2019 Average", "type": "nominal"},
+        "y":{"field":"day_hour_mean","type":"quantitative", "aggregate":"sum"},
+        "color":{
+          "condition":{"selection":"Location"}
+          },
         "strokeDash":{"value":[2,2]}
       }
     }
