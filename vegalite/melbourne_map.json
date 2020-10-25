@@ -1,0 +1,48 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "width":600,
+  "height":400,
+  "layer": [
+    {
+      "data":{
+      "url":"https://raw.githubusercontent.com/crcorbett/FIT3179/master/data/map/buildings.json",
+      "format":{
+        "type": "topojson",
+        "feature":"polyMap"
+      }
+      },
+      "mark":{
+        "type":"geoshape",
+        "color":"#eee"
+        }
+    },
+    {
+      "data":{
+      "url":"https://raw.githubusercontent.com/crcorbett/FIT3179/master/data/map/parks.json",
+      "format":{
+        "type": "topojson",
+        "feature":"polyMap"
+      }
+      },
+      "mark":{
+        "type":"geoshape",
+        "color":"rgb(239,244,225)"
+        }
+    },
+    {
+      "data":{
+      "url":"https://raw.githubusercontent.com/crcorbett/FIT3179/master/data/map/rivers.json",
+      "format":{
+        "type": "topojson",
+        "feature":"lineMap"
+      }
+      },
+      "mark":{
+        "type":"geoshape",
+        "color":"rgb(226,237,246)",
+        "strokeWidth":22,
+        "filled":null
+        }
+    }
+  ]
+}

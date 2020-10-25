@@ -10,25 +10,49 @@
     {
       "layer":[
         {
-        "data": {
-          "url": "https://raw.githubusercontent.com/crcorbett/FIT3179-Week-9/main/data/map.json",
-          "format": {
-            "type": "topojson",
-            "feature": "ABS_SA2_2011"
-          }
-        },
-        "projection": {
-          "type": "equirectangular"
-        },
-        "mark": {
-          "type": "geoshape",
-          "fill": "lightgray",
-          "stroke": "white"
-        },
-        "height": 400,
-        "width": 400,
-        "title": "July 2019"
+      "title":"July 2019",
+      "height":280,
+      "width":450,
+      "data":{
+      "url":"https://raw.githubusercontent.com/crcorbett/FIT3179/master/data/map/buildings.json",
+      "format":{
+        "type": "topojson",
+        "feature":"polyMap"
+      }
       },
+      "mark":{
+        "type":"geoshape",
+        "color":"#eee"
+      }
+    },
+    {
+      "data":{
+      "url":"https://raw.githubusercontent.com/crcorbett/FIT3179/master/data/map/parks.json",
+      "format":{
+        "type": "topojson",
+        "feature":"polyMap"
+      }
+      },
+      "mark":{
+        "type":"geoshape",
+        "color":"rgb(239,244,225)"
+        }
+    },
+    {
+      "data":{
+      "url":"https://raw.githubusercontent.com/crcorbett/FIT3179/master/data/map/rivers.json",
+      "format":{
+        "type": "topojson",
+        "feature":"lineMap"
+      }
+      },
+      "mark":{
+        "type":"geoshape",
+        "color":"rgb(226,237,246)",
+        "strokeWidth":22,
+        "filled":null
+        }
+    },
       {
         "selection": {
           "Date": {
@@ -141,25 +165,47 @@
     {
       "layer":[
       {
-        "data": {
-          "url": "https://raw.githubusercontent.com/crcorbett/FIT3179-Week-9/main/data/map.json",
-          "format": {
-            "type": "topojson",
-            "feature": "ABS_SA2_2011"
-          }
-        },
-        "projection": {
-          "type": "equirectangular"
-        },
-        "mark": {
-          "type": "geoshape",
-          "fill": "lightgray",
-          "stroke": "white"
-        },
-        "height": 400,
-        "width": 400,
-        "title": "July 2020"
+        "title":"July 2020",
+      "data":{
+      "url":"https://raw.githubusercontent.com/crcorbett/FIT3179/master/data/map/buildings.json",
+      "format":{
+        "type": "topojson",
+        "feature":"polyMap"
+      }
       },
+      "mark":{
+        "type":"geoshape",
+        "color":"#eee"
+        }
+    },
+    {
+      "data":{
+      "url":"https://raw.githubusercontent.com/crcorbett/FIT3179/master/data/map/parks.json",
+      "format":{
+        "type": "topojson",
+        "feature":"polyMap"
+      }
+      },
+      "mark":{
+        "type":"geoshape",
+        "color":"rgb(239,244,225)"
+        }
+    },
+    {
+      "data":{
+      "url":"https://raw.githubusercontent.com/crcorbett/FIT3179/master/data/map/rivers.json",
+      "format":{
+        "type": "topojson",
+        "feature":"lineMap"
+      }
+      },
+      "mark":{
+        "type":"geoshape",
+        "color":"rgb(226,237,246)",
+        "strokeWidth":22,
+        "filled":null
+        }
+    },
       {
         "selection": {
           "Location":{
@@ -369,7 +415,8 @@
         "x":{"field":"Hour"},
         "y":{"field":"day_hour_mean","type":"quantitative", "aggregate":"sum"},
         "color":{
-          "condition":{"selection":"Location"}
+          "condition":{"selection":"Location"},
+          "datum":"2019 Avg."
           },
         "strokeDash":{"value":[2,2]}
       }
