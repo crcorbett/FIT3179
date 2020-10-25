@@ -147,9 +147,9 @@
           "size": {
             "condition":{
               "selection":"Location",
-              "value":150
+              "value":200
             },
-            "value":80
+            "value":100
           },
             "tooltip":[
               {"field":"Location"},
@@ -158,6 +158,54 @@
               {"field":"Normalised"},
               {"field":"Count"}
               ]
+        }
+      },
+      {
+        "transform": [
+          {
+            "filter": {
+              "selection": "Date"
+            }
+          },
+          {
+            "filter":"datum.Year == 2019"
+          },
+          {
+            "filter": {
+              "selection": "Hour"
+            }
+          },
+          {
+      "filter": {
+        "selection": "Location"
+      }
+    },
+          {
+            "filter":"datum.Location == 'The Arts Centre' || datum.Location == 'Melbourne Central' || datum.Location == 'Southbank' || datum.Location == 'Bourke St Bridge' || datum.Location == 'Collins St (North)' || datum.Location == 'Collins Place (North)' || datum.Location == 'Southern Cross Station' || datum.Location == 'Princes Bridge' || datum.Location == 'Melbourne Convention Exhibition Centre' || datum.Location == 'Swanston St - RMIT Building 14'"
+          }
+          
+        ],
+        "mark": {
+          "type": "text",
+          "align": "left", 
+          "baseline": "middle",
+          "color": "black", 
+          "dx": 10,
+          "dy" : -3, 
+          "fontSize": 7
+        },
+        "encoding": {
+          "text":{"field":"Location", "type":"nominal"},
+          "latitude": {"field":"latitude", "type": "quantitative"},
+          "longitude": {"field":"longitude", "type": "quantitative"},
+            "tooltip":[
+              {"field":"Location"},
+              {"field":"Day"},
+              {"field":"Year"},
+              {"field":"Normalised"},
+              {"field":"Count"}
+            ]
+    
         }
       }
       ]
@@ -263,10 +311,56 @@
           "size": {
             "condition":{
               "selection":"Location",
-              "value":150
+              "value":200
             },
-            "value":80
+            "value":100
           },
+            "tooltip":[
+              {"field":"Location"},
+              {"field":"Day"},
+              {"field":"Year"},
+              {"field":"Normalised"},
+              {"field":"Count"}
+              ]
+        }
+      },
+      {
+        "transform": [
+          {
+            "filter": {
+              "selection": "Date"
+            }
+          },
+          {
+            "filter":"datum.Year == 2020"
+          },
+          {
+            "filter": {
+              "selection": "Hour"
+            }
+          },
+          {
+            "filter":"datum.Location == 'The Arts Centre' || datum.Location == 'Melbourne Central' || datum.Location == 'Southbank' || datum.Location == 'Bourke St Bridge' || datum.Location == 'Collins St (North)' || datum.Location == 'Collins Place (North)' || datum.Location == 'Southern Cross Station' || datum.Location == 'Princes Bridge' || datum.Location == 'Melbourne Convention Exhibition Centre' || datum.Location == 'Swanston St - RMIT Building 14'"
+          },
+          {
+      "filter": {
+        "selection": "Location"
+      }
+    }
+        ],
+        "mark": {
+          "type": "text",
+          "align": "left", 
+          "baseline": "middle",
+          "color": "black", 
+          "dx": 10,
+          "dy" : -3, 
+          "fontSize": 7
+        },
+        "encoding": {
+          "text":{"field":"Location", "type":"nominal"},
+          "latitude": {"field":"latitude", "type": "quantitative"},
+          "longitude": {"field":"longitude", "type": "quantitative"},
             "tooltip":[
               {"field":"Location"},
               {"field":"Day"},
