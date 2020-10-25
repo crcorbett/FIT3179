@@ -97,7 +97,7 @@
             "fields":["Location"],
             "on":"click",
             "empty": "all",
-            "init": {"Location":["Collins Place (North)", "Bourke St Bridge", "Southbank"]}
+            "init": {"Location":["Collins Place (North)", "Bourke St Bridge", "Southbank", "Melbourne Central", "The Arts Centre", "Collins St (North)"]}
           }
         },
         "transform": [
@@ -203,7 +203,7 @@
         "type":"geoshape",
         "color":"rgb(226,237,246)",
         "strokeWidth":22,
-        "filled":null
+        "filled":false
         }
     },
       {
