@@ -33,6 +33,6 @@ ggplot(melbourne_mobility_data, mapping = aes(x=Date, y=Value)) +
 
 # Plot  
 ggplot(melbourne_mobility_data_filtered) + 
-  geom_smooth(aes(x=Date, y=Value, color=transportation_type)) +
+  geom_line(aes(x=Date, y=Value, color=transportation_type)) +
   geom_line(aes(x=Date, y=100))
 
