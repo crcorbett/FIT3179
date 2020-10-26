@@ -24,9 +24,11 @@ ggplot(restrictions) +
   geom_line(aes(x=Date, y=confirmed)) +
   scale_y_continuous(name = "Daily Coronavirus cases", sec.axis = sec_axis(~./700*80 ,name="Government Response Index"))
 
-serialised <- toJSON(melbourne_mobility_data)
+serialised <- toJSON(restrictions)
 write(serialised, 'data/restrictions.json')
 
-restrictions_date <- data.frame(Date=c('2020-03-16', '2020-07-19'), Measure=c("State of Emergency",'Face Masks'))
+restrictions_date <- tibble(data.frame(Date=c('2020-03-16', '2020-07-19', '2020-07-09', '2020-08-02'), Measure=c("State of Emergency",'Face Masks', 'Stage 3', 'Stage 4')))
+restrictions_date$Date <- ymd(restrictions_date$Date)
 
-                                
+serialised <- toJSON(restrictions_date)
+write(serialised, 'data/restrictions_date.json')
