@@ -10,13 +10,20 @@
       "data":{
         "url": "https://raw.githubusercontent.com/crcorbett/FIT3179/master/data/restrictions_date.json"
       },
+      "transform": [
+        {
+          "filter":"datum.Measure == 'Stage Two' || datum.Measure =='First Step'"
+        }
+      ],
       "mark":{
-        "type": "rule",
-        "color":"black",
-        "opacity":0.5
+        "type": "rect",
+        "opacity":0.5,
+        "strokeWidth":20
       },
       "encoding": {
-        "x":{"field":"Date", "type": "temporal", "timeUnit":"month"}
+        "x":{"field":"Start", "type": "temporal", "timeUnit":"month"},
+        "x2":{"field":"End", "type":"temporal","timeUnit":"month"},
+        "fill":{"field":"Measure", "type": "nominal","scale": {"domain": ["Stage Two", "First Step"], "range":["#F1C40F", "#95A5A6"]}}
       }
     },
     {
