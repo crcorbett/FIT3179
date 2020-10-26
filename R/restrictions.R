@@ -13,9 +13,16 @@ restrictions$Date <- ymd(restrictions$Date)
 restrictions <- restrictions %>%
   select(Date, ConfirmedCases, ConfirmedDeaths, GovernmentResponseIndex)
 
+coronavirus <- tibble(read_csv("data/raw/coronavirus/COVID_AU_state_daily_change.csv")) %>%
+  filter(state=="Victoria") %>%
+  rename(Date = date)
+
+restrictions <- right_join(restrictions, coronavirus)
+
 ggplot(restrictions) +
-  geom_smooth(aes(x=Date, y=GovernmentResponseIndex)) +
-  geom_smooth(aes(x=Date, y=ConfirmedCases))
+  geom_line(aes(x=Date, y=GovernmentResponseIndex/80*700)) +
+  geom_line(aes(x=Date, y=confirmed)) +
+  scale_y_continuous(name = "Daily Coronavirus cases", sec.axis = sec_axis(~./700*80 ,name="Government Response Index"))
 
 serialised <- toJSON(melbourne_mobility_data)
 write(serialised, 'data/restrictions.json')
