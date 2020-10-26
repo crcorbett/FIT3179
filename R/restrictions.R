@@ -26,3 +26,7 @@ ggplot(restrictions) +
 
 serialised <- toJSON(melbourne_mobility_data)
 write(serialised, 'data/restrictions.json')
+
+restrictions_date <- data.frame(Date=c('2020-03-16', '2020-07-19'), Measure=c("State of Emergency",'Face Masks'))
+
+                                
