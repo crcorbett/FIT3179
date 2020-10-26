@@ -27,8 +27,13 @@ ggplot(restrictions) +
 serialised <- toJSON(restrictions)
 write(serialised, 'data/restrictions.json')
 
-restrictions_date <- tibble(data.frame(Date=c('2020-03-16', '2020-07-19', '2020-07-09', '2020-08-02'), Measure=c("State of Emergency",'Face Masks', 'Stage 3', 'Stage 4')))
-restrictions_date$Date <- ymd(restrictions_date$Date)
+restrictions_date <- tibble(
+  Measure = c("Stage One", "Stage Two", "Stage Three", "Stage Two", "Stage Three", "Stage Four", "First Step", "Second Step", "Second Step (Extended"), 
+  Start=c("2020-03-23", "2020-03-26", "2020-03-31", "2020-06-01", "2020-07-08", "2020-08-02", "2020-09-14", "2020-09-28", "2020-10-19"), 
+  End=c("2020-03-26", "2020-03-31", "2020-06-01", "2020-07-08", "2020-08-02", "2020-09-14", "2020-09-28", "2020-10-19", "2020-10-26")
+)
+restrictions_date$Start <- ymd(restrictions_date$Start)
+restrictions_date$End <- ymd(restrictions_date$End)
 
 serialised <- toJSON(restrictions_date)
 write(serialised, 'data/restrictions_date.json')

@@ -7,11 +7,24 @@
   },
   "layer":[
     {
+      "data":{
+        "url": "https://raw.githubusercontent.com/crcorbett/FIT3179/master/data/restrictions_date.json"
+      },
+      "mark":{
+        "type": "rule",
+        "color":"black",
+        "opacity":0.5
+      },
+      "encoding": {
+        "x":{"field":"Date", "type": "temporal", "timeUnit":"month"}
+      }
+    },
+    {
     "mark": {
     "type":"errorband",
     "extent": "ci",
     "borders": {
-          "opacity": 0.5,
+          "opacity": 1,
           "strokeDash": [6, 4]
         }
        },
@@ -25,7 +38,7 @@
     "mark": {
     "type":"line",
     "color":"black",
-    "opacity":0.6
+    "opacity":1
        },
   "encoding": {
     "x":{"field":"Date", "type":"temporal", "timeUnit":"month"},
