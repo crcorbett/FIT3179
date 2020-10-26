@@ -1,0 +1,14 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/crcorbett/FIT3179/master/data/melbourne_mobility_data.json"
+  },
+  "mark": {
+    "type":"line"
+  },
+  "encoding": {
+    "x":{"field":"Date", "type":"temporal"},
+    "y":{"field":"Value", "type": "quantitative"},
+    "color":{"field":"transportation_type", "type": "nominal"}
+  }
+}
