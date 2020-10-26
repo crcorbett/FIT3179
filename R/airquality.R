@@ -33,7 +33,7 @@ ggplot(airquality_data) +
   facet_wrap(~Type, scales="free")
 
 ggplot(airquality_data) +
-    geom_tile(aes(x=factor(month(Date)), y=factor(year(Date)), fill=median, alpha=median))
+    geom_tile(aes(x=factor(day_month), y=factor(year(Date)), fill=median))
 
 #
 #
