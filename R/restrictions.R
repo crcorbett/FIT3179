@@ -13,5 +13,9 @@ restrictions$Date <- ymd(restrictions$Date)
 restrictions <- restrictions %>%
   select(Date, ConfirmedCases, ConfirmedDeaths, GovernmentResponseIndex)
 
-serialised <- toJSON(restrictions)
+ggplot(restrictions) +
+  geom_smooth(aes(x=Date, y=GovernmentResponseIndex)) +
+  geom_smooth(aes(x=Date, y=ConfirmedCases))
+
+serialised <- toJSON(melbourne_mobility_data)
 write(serialised, 'data/restrictions.json')
