@@ -35,5 +35,7 @@ restrictions_date <- tibble(
 restrictions_date$Start <- ymd(restrictions_date$Start)
 restrictions_date$End <- ymd(restrictions_date$End)
 
+restrictions_date <- restrictions_date %>% mutate(Middle=Start + ((End-Start)/2))
+
 serialised <- toJSON(restrictions_date)
 write(serialised, 'data/restrictions_date.json')

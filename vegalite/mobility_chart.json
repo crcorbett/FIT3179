@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
-  "width":400,
+  "width":600,
   "height":400,
   "data": {
     "url": "https://raw.githubusercontent.com/crcorbett/FIT3179/master/data/melbourne_mobility_data.json"
@@ -23,7 +23,7 @@
       "encoding": {
         "x":{"field":"Start", "type": "temporal", "timeUnit":"month"},
         "x2":{"field":"End", "type":"temporal","timeUnit":"month"},
-        "fill":{"field":"Measure", "type": "nominal","scale": {"domain": ["Stage Two", "First Step"], "range":["#F1C40F", "#95A5A6"]}}
+        "fill":{"field":"Measure", "type": "nominal","scale": {"domain": ["Stage Two", "First Step"], "range":["#e3e6e8"]}, "legend":null}
       }
     },
     {
