@@ -4,16 +4,15 @@
 # Created on: 9/10/20
 
 library('tidyverse')
-library('vegalite')
 library('lubridate')
 library('jsonlite')
 
 # Read in .csv data - data from Melbourne Open Data portal
-ped_sensor_locations <- as_tibble(read.csv('Data/Pedestrian/Pedestrian_Counting_System_-_Sensor_Locations.csv'))
+ped_sensor_locations <- as_tibble(read.csv('data/raw/pedestrian/Pedestrian Counting System - Sensor Locations.csv'))
 ped_sensor_locations <- ped_sensor_locations %>% select(sensor_id, latitude, longitude)
 
 # Read in .csv data - data from Melbourne Open Data portal
-ped_data <- as_tibble(read.csv('Data/Pedestrian/pedestrian_data.csv')) %>% filter(Year %in% c(2019, 2020)) #%>% filter(Month=='July')
+ped_data <- as_tibble(read.csv('data/raw/pedestrian/Pedestrian Counting System - Dataset.csv')) %>% filter(Year %in% c(2019, 2020)) #%>% filter(Month=='July')
 ped_data<- as_tibble(merge(ped_data, ped_sensor_locations, by.x="Sensor_ID", by.y = "sensor_id"))
 
 # Pedestrian data
@@ -52,4 +51,4 @@ summ_ped_data <- summ_ped_data %>% filter(Location %in% top_locations$Location) 
 
 
 serialised <- toJSON(summ_ped_data)
-write(serialised, 'ped_data.json')
+write(serialised, 'data/ped_data.json')
