@@ -29,7 +29,7 @@
       "encoding": {
         "x":{"field":"Start", "type": "temporal", "title":"Date"},
         "x2":{"field":"End", "type": "temporal"},
-        "fill":{"field":"Measure", "type": "ordinal", "scale":{"scheme":"reds"}, "sort":[]}
+        "fill":{"field":"Measure", "type": "ordinal", "scale":{"scheme":"reds"}, "sort":[], "legend":{"title":"Restriction Measure"}}
       }
     },
     {
@@ -84,7 +84,7 @@
        },
   "encoding": {
     "x":{"field":"Date", "type":"temporal", "timeUnit":"yearmonth", "title":"Date", "axis":{"grid": true, "format":"%b"}},
-    "y":{"field":"Value", "type": "quantitative","timeUnit":"month" , "axis":{"tickCount":5, "grid": false}, "title":"Y-axis"},
+    "y":{"field":"Value", "type": "quantitative","timeUnit":"month" , "axis":{"tickCount":5, "grid": false}, "title":"Mobility (%)"},
     "color":{"field":"transportation_type", "type": "nominal", "scale":{"range":["#a8dadc","#457b9d", "#1d3557"]}}
         }
     },
