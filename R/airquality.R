@@ -13,6 +13,8 @@ airquality_data_2020 <- as_tibble(read_csv('data/raw/airquality/AQI-2020.csv')) 
 
 airquality_data <- full_join(airquality_data_2019, airquality_data_2020)
 
+minmaxnormalise <- function(x, min, max){(x-min) /(max-min)}
+
 airquality_data <- airquality_data %>%
   select(-Country, -City) %>%
   mutate(Day=day(Date), Month=month(Date)) %>%
@@ -21,19 +23,30 @@ airquality_data$Type <- as_factor(airquality_data$Type)
 
 # Filter to certain environmental metrics
 airquality_data <- airquality_data %>%
-  filter(Type %in% c("co", "pm10", "no2", "o3", "so2","pm25")) %>%
-  filter(Month %in% c(6, 7)) %>%
-  filter(Type=="no2") %>%
-  mutate(day=day(Date), month=month(Date), year=year(Date)) %>%
-  mutate(day_month=paste(day, month, sep="/"))
+  filter(Type %in% c("so2")) %>%
+  mutate(day=day(Date), month=month(Date), year=year(Date), wday=weekdays(Date)) %>%
+  filter(month %in% c(5,6)) %>%
+  mutate(wday = fct_reorder(wday, wday(Date, week_start = getOption(" lubridate.week.start", 1))))
 
+airquality_data <- airquality_data %>%
+  group_by(Type) %>%
+  mutate(normalise = minmaxnormalise(median, min(median), max(median))) %>%
+  ungroup()
+
+serialised <- toJSON(airquality_data)
+write(serialised, 'data/airquality_epa.json')
 
 ggplot(airquality_data) +
   geom_boxplot(aes(x=Date, y=median, colour=Type)) +
   facet_wrap(~Type, scales="free")
 
 ggplot(airquality_data) +
-    geom_tile(aes(x=factor(day_month), y=factor(year(Date)), fill=median))
+  geom_tile(aes(x=wday, y=factor(month(Date, label = T)), fill=normalise, width=0.9, height=0.9), na.rm = T) +
+  facet_grid(week(Date)~year(Date), scales = "free") +
+  scale_y_discrete() +
+  theme_bw() +
+  scale_fill_gradient2(high = "red")
+
 
 #
 #
@@ -56,3 +69,6 @@ airquality %>%
   mutate(normalised=rnorm(mean, mean = 0, sd = 1)) %>% 
   ggplot() +
   geom_tile(aes(x=date, y=type, fill=mean, group=type))
+
+# serialised <- toJSON(airquality_data)
+# write(serialised, 'data/airquality_epa.json')
