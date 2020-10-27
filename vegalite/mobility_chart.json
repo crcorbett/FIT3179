@@ -136,6 +136,32 @@
     "text":{"field":"Value_p", "type": "quantitative", "aggregate":"mean", "format":".2p"},
     "detail":{"field":"transportation_type", "type": "nominal", "title":"Transport Type"}
         }
+    },
+    {
+      "mark":{
+        "type":"rect",
+        "fillOpacity":0.5
+        },
+      "encoding": {
+        "x":{"value":390, "timeUnit":"yearmonth"},
+        "x2":{"value":540},
+        "y":{"value":55},
+        "y2":{"value":75},
+        "color":{"value":"white"}
+      }
+    },
+    {
+      "mark":{
+        "type":"text",
+        "align":"left",
+        "dy":15,
+        "dx":-4
+        },
+      "encoding": {
+        "x":{"value":400, "timeUnit":"yearmonth"},
+        "y":{"value":50},
+        "text":{"value":"Reference Date: 14/01/2020"}
+      }
     }
   ]
 }
