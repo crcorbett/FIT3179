@@ -25,7 +25,6 @@ airquality_data$Type <- as_factor(airquality_data$Type)
 airquality_data <- airquality_data %>%
   filter(Type %in% c("so2")) %>%
   mutate(day=day(Date), month=month(Date), year=year(Date), wday=weekdays(Date)) %>%
-  filter(month %in% c(5,6)) %>%
   mutate(wday = fct_reorder(wday, wday(Date, week_start = getOption(" lubridate.week.start", 1))))
 
 airquality_data <- airquality_data %>%
@@ -55,8 +54,7 @@ ggplot(airquality_data) +
 airquality <- as_tibble(read_csv("data/raw/airquality/Melbourne - Microclimate Sensor Readings.csv"))
 airquality$local_time <- ymd_hms(airquality$local_time)
 airquality$type <- as_factor(airquality$type)
-airquality <- airquality %>%
-  filter(type %in% c("PM2.5-EPA-1h-NOPK-EPA-24h", "PM10-EPA-1h-NOPK-EPA-24h"))
+airquality <- airquality
 
 airquality <- airquality %>% 
   group_by(site_id, type, date=date(local_time)) %>% 
