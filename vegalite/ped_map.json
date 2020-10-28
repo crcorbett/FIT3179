@@ -8,8 +8,8 @@
     "fontSize": 50,
     "subtitle": "Melbourne CBD, normalised to 2019 pedestrian traffic",
     "align": "center",
-    "dx": 450,
-    "dy": -15
+    "dx":450,
+    "dy":-15
   },
   "vconcat": [
     {
@@ -262,8 +262,8 @@
           "layer": [
             {
               "title": "July 2020",
-              "height": 250,
-              "width": 400,
+              "height":250,
+              "width":400,
               "data": {
                 "url": "https://raw.githubusercontent.com/crcorbett/FIT3179/master/data/map/buildings.json",
                 "format": {
@@ -480,9 +480,7 @@
             "x": {
               "field": "Hour",
               "type": "ordinal",
-              "axis": {
-                "tickBand": "extent"
-              }
+              "axis":{"tickBand":"extent"}
             },
             "y": {
               "aggregate": "sum",
