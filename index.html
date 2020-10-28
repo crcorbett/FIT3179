@@ -10,35 +10,69 @@
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
 </head>
 <body>
-	<div class="card bg-light">
-		<img class="card-img-top blur" src="https://www.australianlight.com.au/uploaded/public/51e7e3170b5c16.64708816.jpg" alt="Card image cap">
-	<div class="container">
-		<div class="row">
-			<div class="col-12 d-flex justify-content-center">
-				<p>Lorem ipsum dolor amet.</p>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-12 d-flex justify-content-center">
-				<div id="airquality"></div>
-				<script type="text/javascript">
-				  var spec = "https://raw.githubusercontent.com/crcorbett/FIT3179/master/vegalite/airquality.json";
-				  vegaEmbed('#airquality', spec).then(function(result) {
-				    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-				  }).catch(console.error);
-				</script>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-6 d-flex justify-content-center">
-				<p>Here</p>
-			</div>
-			<div class="col-6 d-flex justify-content-center">
-				<p>Here</p>
+<div class="container-fluid">
+	<div class="row mt-5">
+		<div class="col-md-12">
+			<div class="row">
+				<div class="col-md-1">
+				</div>
+				<div class="col-md-10">
+					<div class="card">
+						<h5 class="card-header">
+							Card title
+						</h5>
+						<div class="card-block">
+							<div class="row">
+								<div class="col-12 d-flex justify-content-center">
+									<div id="pedestrian">
+
+									</div>
+									<script type="text/javascript">
+										var spec = "https://raw.githubusercontent.com/crcorbett/FIT3179/master/vegalite/ped_map.json";
+										vegaEmbed('#pedestrian', spec).then(function (result) {
+											// Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+										}).catch(console.error);
+									</script>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-6 d-flex justify-content-center">
+									<div id="mobility">
+
+									</div>
+									<script type="text/javascript">
+										var spec = "https://raw.githubusercontent.com/crcorbett/FIT3179/master/vegalite/mobility_chart.json";
+										vegaEmbed('#mobility', spec).then(function (result) {
+											// Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+										}).catch(console.error);
+									</script>
+								</div>
+								<div class="col-6 d-flex justify-content-center"></div>
+							</div>
+							<div class="row">
+								<div class="col-12 d-flex justify-content-center bg-danger">
+									<div id="airquality">
+
+									</div>
+									<script type="text/javascript">
+										var spec = "https://raw.githubusercontent.com/crcorbett/FIT3179/master/vegalite/airquality.json";
+										vegaEmbed('#airquality', spec).then(function (result) {
+											// Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+										}).catch(console.error);
+									</script>
+								</div>
+							</div>
+						</div>
+						<div class="card-footer pb-0 text-center">
+							<p><b>Cooper Corbett 2020</b> | FIT3179</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-1">
+				</div>
 			</div>
 		</div>
 	</div>
-		<div class="card-footer a"><b>Cooper Corbett 2020</b> | FIT3179 </div>
-	</div>
+</div>
 </body>
 </html>
