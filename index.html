@@ -11,18 +11,16 @@
 </head>
 <body>
 <div class="container-fluid">
-    <div class="row mt-5">
+    <div class="row pt-5 pb-5">
         <div class="col-md-12">
             <div class="row">
                 <div class="col-md-1">
                 </div>
                 <div class="col-md-10">
-                    <div class="card">
-                        <h5 class="card-header">
-                            Card title
-                        </h5>
+                    <div class="card border-0 shadow my-5">
+
                         <div class="card-block">
-                            <div class="row">
+                            <div class="row pt-2 pb-2">
                                 <div class="col-12 d-flex justify-content-center">
                                     <div id="pedestrian">
 
@@ -35,10 +33,32 @@
                                     </script>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-6 d-flex justify-content-center">
-                                    <div id="mobility">
-
+                            <hr>
+                            <div class="row pt-2 pb-2">
+                                <div class="col-6 d-flex justify-content-center pl-2">
+                                    <div id="mobility" class="vega-embed has-actions">
+                                        <div class="chart-wrapper" role="graphics-document"
+                                             aria-roledescription="visualization" aria-label="Vega visualization"
+                                             style="cursor: default;">
+                                            <canvas width="1166" height="822" class="marks"
+                                                    style="width: 583px; height: 411px;"></canvas>
+                                            <form class="vega-bindings"></form>
+                                        </div>
+                                        <details title="Click to view actions">
+                                            <summary>
+                                                <svg viewBox="0 0 16 16" fill="currentColor" stroke="none"
+                                                     stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                                                    <circle r="2" cy="8" cx="2"></circle>
+                                                    <circle r="2" cy="8" cx="8"></circle>
+                                                    <circle r="2" cy="8" cx="14"></circle>
+                                                </svg>
+                                            </summary>
+                                            <div class="vega-actions"><a href="#" target="_blank"
+                                                                         download="visualization.svg">Save as SVG</a><a
+                                                    href="#" target="_blank" download="visualization.png">Save as
+                                                PNG</a><a href="#">View Source</a><a href="#">View Compiled Vega</a><a
+                                                    href="#">Open in Vega Editor</a></div>
+                                        </details>
                                     </div>
                                     <script type="text/javascript">
                                         var spec = "https://raw.githubusercontent.com/crcorbett/FIT3179/master/vegalite/mobility_chart.json";
@@ -47,10 +67,10 @@
                                         }).catch(console.error);
                                     </script>
                                 </div>
-                                <div class="col-6 d-flex justify-content-center"></div>
                             </div>
-                            <div class="row">
-                                <div class="col-12 d-flex justify-content-center bg-danger">
+                            <hr>
+                            <div class="row pt-2 pb-2">
+                                <div class="col-12 d-flex justify-content-center">
                                     <div id="airquality">
 
                                     </div>
@@ -63,7 +83,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card-footer pb-0 text-center">
+                        <div class="card-footer pb-2 text-center">
                             <p><b>Cooper Corbett 2020</b> | FIT3179</p>
                         </div>
                     </div>
