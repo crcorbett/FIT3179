@@ -2,9 +2,9 @@
    "$schema":"https://vega.github.io/schema/vega-lite/v4.json",
    "title":{
       "text":"Melbourne Air Quality (SO2)",
-      "fontSize":20,
+      "fontSize":24,
       "align":"left",
-      "dx":370
+      "dx":240
    },
    "facet":{
       "row":{
@@ -94,6 +94,7 @@
                   "axis":{
                      "grid":false,
                      "tickBand":"extent",
+                     "tickMinStep":100,
                      "title":"",
                      "labelFontStyle":"bold"
                   }
@@ -130,10 +131,10 @@
          },
          {
             "width":{
-               "step":40
+               "step":10
             },
             "height":{
-               "step":40
+               "step":10
             },
             "transform":[
                {
@@ -151,7 +152,7 @@
             ],
             "mark":{
                "type":"text",
-               "size":10
+               "size":8
             },
             "encoding":{
                "x":{
@@ -211,10 +212,10 @@
          },
          {
             "width":{
-               "step":10
+               "step":20
             },
             "height":{
-               "step":10
+               "step":20
             },
             "transform":[
                {
