@@ -1,167 +1,294 @@
 {
-  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
-  "width":600,
-  "height":400,
-  "title":{"text":"Melbourne Mobility", "fontSize":50, "align": "center", "dy":-15},
-  "data": {
-    "url": "https://raw.githubusercontent.com/crcorbett/FIT3179/master/data/melbourne_mobility_data.json",
-    "format": {
-      "parse": {"Date": "utc:'%Y-%m-%d'"}
-    }
-  },
-  "layer":[
-    {
-      "data":{
-        "url": "https://raw.githubusercontent.com/crcorbett/FIT3179/master/data/restrictions_date.json",
-        "format": {
-      "parse": {"Start": "utc:'%Y-%m-%d'", "End": "utc:'%Y-%m-%d'", "Middle": "utc:'%Y-%m-%d'"}
-    }
-      },
-      "transform": [
-        {
-          "filter":"datum.Measure != 'Second Step' && datum.Measure != 'Second Step (Extended' && datum.Measure != 'First Step'"
-        }
-      ],
-      "mark":{
-        "type": "rect",
-        "opacity":0.65
-      },
-      "encoding": {
-        "x":{"field":"Start", "type": "temporal", "title":"Date"},
-        "x2":{"field":"End", "type": "temporal"},
-        "fill":{"field":"Measure", "type": "ordinal", "scale":{"scheme":"reds"}, "sort":[], "legend":{"title":"Restriction Measure"}}
+   "$schema":"https://vega.github.io/schema/vega-lite/v4.json",
+   "width":"container",
+   "height":"container",
+   "title":{
+      "text":"Mobility",
+      "fontSize":50,
+      "align":"center",
+      "dy":-15
+   },
+   "data":{
+      "url":"https://raw.githubusercontent.com/crcorbett/FIT3179/master/data/melbourne_mobility_data.json",
+      "format":{
+         "parse":{
+            "Date":"utc:'%Y-%m-%d'"
+         }
       }
-    },
-    {
-    "mark": {
-    "type":"line",
-    "color":"white",
-    "y":92,
-    "opacity":0.9,
-    "strokeWidth":10
-       },
-  "encoding": {
-    "x":{"field":"Date", "type":"temporal"}
-        }
-    },
-    {
-    "mark": {
-    "type":"line",
-    "color":"slategray",
-    "y":92,
-    "opacity":1,
-    "strokeWidth":1.5
-       },
-  "encoding": {
-    "x":{"field":"Date", "type":"temporal"}
-        }
-    },
-    {
-    "mark": {
-    "type":"text",
-    "color":"black",
-    "style":"label",
-    "dy":-12,
-    "size":10,
-    "opacity":1
-       },
-  "encoding": {
-    "y":{"value":92},
-    "x":{"value":250, "type":"temporal"},
-    "text":{"value":""}
-        }
-    },
+   },
+   "layer":[
+      {
+         "data":{
+            "url":"https://raw.githubusercontent.com/crcorbett/FIT3179/master/data/restrictions_date.json",
+            "format":{
+               "parse":{
+                  "Start":"utc:'%Y-%m-%d'",
+                  "End":"utc:'%Y-%m-%d'",
+                  "Middle":"utc:'%Y-%m-%d'"
+               }
+            }
+         },
+         "transform":[
+            {
+               "filter":"datum.Measure != 'Second Step' && datum.Measure != 'Second Step (Extended' && datum.Measure != 'First Step'"
+            }
+         ],
+         "mark":{
+            "type":"rect",
+            "opacity":0.65
+         },
+         "encoding":{
+            "x":{
+               "field":"Start",
+               "type":"temporal",
+               "title":"Date",
+               "axis":{
+                  "tickBand":"extent",
+                  "grid":true,
+                  "tickCount":"month",
+                  "gridWidth":2
+               }
+            },
+            "x2":{
+               "field":"End",
+               "type":"temporal"
+            },
+            "fill":{
+               "field":"Measure",
+               "type":"ordinal",
+               "scale":{
+                  "scheme":"reds"
+               },
+               "sort":[
 
-    {
-    "mark": {
-    "type":"errorband",
-    "extent": "ci",
-    "opacity": 0.8,
-    "borders": {
-          "opacity": 1,
-          "strokeDash": [6, 4]
-        }
-       },
-  "encoding": {
-    "x":{"field":"Date", "type":"temporal", "timeUnit":"yearmonth", "title":"Date", "axis":{"grid": true, "format":"%b"}},
-    "y":{"field":"Value", "type": "quantitative","timeUnit":"month" , "axis":{"tickCount":5, "grid": false}, "title":"Mobility (%)"},
-    "color":{"field":"transportation_type", "type": "nominal", "scale":{"range":["#a8dadc","#457b9d", "#1d3557"]}}
-        }
-    },
-    {
-    "mark": {
-    "type":"line",
-    "opacity":1
-       },
-  "encoding": {
-    "x":{"field":"Date", "type":"temporal", "timeUnit":"yearmonth"},
-    "y":{"field":"Value", "type": "quantitative", "aggregate":"mean"},
-    "color":{"field":"transportation_type", "type": "nominal", "title":"Transport Type"}
-        }
-    },
-    {
-    "transform": [
-      {"filter": {"field": "Date", "timeUnit":"month", "oneOf":["Jun", "Apr", "Aug"]}}
-    ],
-    "mark": {
-    "type":"circle",
-    "color":"white",
-    "fillOpacity":0.85,
-    "size":120,
-    "stroke":"black"
-       },
-  "encoding": {
-    "x":{"field":"Date", "type":"temporal", "timeUnit":"yearmonth"},
-    "y":{"field":"Value", "type": "quantitative", "aggregate":"mean"},
-    "detail":{"field":"transportation_type", "type": "nominal", "title":"Transport Type"}
-        }
-    },
-    {
-    "transform": [
-      {"filter": {"field": "Date", "timeUnit":"month", "oneOf":["Jun", "Apr", "Aug"]}},
-      {"calculate": "datum.Value / 100", "as": "Value_p"}
-    ],
-    "mark": {
-    "type":"text",
-    "fill":"white",
-    "size":10,
-    "align":"left",
-    "fontStyle":"bold",
-    "dx":9,
-    "dy":-9
-       },
-  "encoding": {
-    "x":{"field":"Date", "type":"temporal", "timeUnit":"yearmonth"},
-    "y":{"field":"Value", "type": "quantitative", "aggregate":"mean"},
-    "text":{"field":"Value_p", "type": "quantitative", "aggregate":"mean", "format":".2p"},
-    "detail":{"field":"transportation_type", "type": "nominal", "title":"Transport Type"}
-        }
-    },
-    {
-      "mark":{
-        "type":"rect",
-        "fillOpacity":0.5
-        },
-      "encoding": {
-        "x":{"value":390, "timeUnit":"yearmonth"},
-        "x2":{"value":540},
-        "y":{"value":55},
-        "y2":{"value":75},
-        "color":{"value":"white"}
+               ],
+               "legend":{
+                  "title":"Restriction Measure"
+               }
+            }
+         }
+      },
+      {
+         "mark":{
+            "type":"line",
+            "color":"white",
+            "y":92,
+            "opacity":0.9,
+            "strokeWidth":10
+         },
+         "encoding":{
+            "x":{
+               "field":"Date",
+               "type":"temporal"
+            },
+            "y":{
+               "datum":100
+            }
+         }
+      },
+      {
+         "mark":{
+            "type":"line",
+            "color":"slategray",
+            "opacity":1,
+            "strokeWidth":1.5
+         },
+         "encoding":{
+            "x":{
+               "field":"Date",
+               "type":"temporal"
+            },
+            "y":{
+               "datum":100
+            }
+         }
+      },
+      {
+         "mark":{
+            "type":"errorband",
+            "extent":"ci",
+            "opacity":0.8,
+            "borders":{
+               "opacity":1,
+               "strokeDash":[
+                  6,
+                  4
+               ]
+            }
+         },
+         "encoding":{
+            "x":{
+               "field":"Date",
+               "type":"temporal",
+               "timeUnit":"yearmonth",
+               "title":"Date",
+               "axis":{
+                  "grid":true,
+                  "format":"%b"
+               }
+            },
+            "y":{
+               "field":"Value",
+               "type":"quantitative",
+               "timeUnit":"month",
+               "axis":{
+                  "tickCount":5,
+                  "grid":false
+               },
+               "title":"Mobility (%)"
+            },
+            "color":{
+               "field":"transportation_type",
+               "type":"nominal",
+               "scale":{
+                  "range":[
+                     "#a8dadc",
+                     "#457b9d",
+                     "#1d3557"
+                  ]
+               },
+               "legend":{
+
+               }
+            }
+         }
+      },
+      {
+         "mark":{
+            "type":"line",
+            "opacity":1
+         },
+         "encoding":{
+            "x":{
+               "field":"Date",
+               "type":"temporal",
+               "timeUnit":"yearmonth"
+            },
+            "y":{
+               "field":"Value",
+               "type":"quantitative",
+               "aggregate":"mean"
+            },
+            "color":{
+               "field":"transportation_type",
+               "type":"nominal",
+               "title":"Transport Type"
+            }
+         }
+      },
+      {
+         "transform":[
+            {
+               "filter":{
+                  "field":"Date",
+                  "timeUnit":"month",
+                  "oneOf":[
+                     "Jun",
+                     "Apr",
+                     "Aug"
+                  ]
+               }
+            }
+         ],
+         "mark":{
+            "type":"circle",
+            "color":"white",
+            "fillOpacity":0.85,
+            "size":120,
+            "stroke":"black"
+         },
+         "encoding":{
+            "x":{
+               "field":"Date",
+               "type":"temporal",
+               "timeUnit":"yearmonth"
+            },
+            "y":{
+               "field":"Value",
+               "type":"quantitative",
+               "aggregate":"mean"
+            },
+            "detail":{
+               "field":"transportation_type",
+               "type":"nominal",
+               "title":"Transport Type"
+            }
+         }
+      },
+      {
+         "transform":[
+            {
+               "filter":{
+                  "field":"Date",
+                  "timeUnit":"month",
+                  "oneOf":[
+                     "Jun",
+                     "Apr",
+                     "Aug"
+                  ]
+               }
+            },
+            {
+               "calculate":"datum.Value / 100",
+               "as":"Value_p"
+            }
+         ],
+         "mark":{
+            "type":"text",
+            "fill":"white",
+            "size":10,
+            "align":"left",
+            "fontStyle":"bold",
+            "dx":9,
+            "dy":-9
+         },
+         "encoding":{
+            "x":{
+               "field":"Date",
+               "type":"temporal",
+               "timeUnit":"yearmonth"
+            },
+            "y":{
+               "field":"Value",
+               "type":"quantitative",
+               "aggregate":"mean"
+            },
+            "text":{
+               "field":"Value_p",
+               "type":"quantitative",
+               "aggregate":"mean",
+               "format":".2p"
+            },
+            "detail":{
+               "field":"transportation_type",
+               "type":"nominal",
+               "title":"Transport Type"
+            }
+         }
+      },
+      {
+         "mark":{
+            "type":"text",
+            "align":"left",
+            "dy":15,
+            "dx":-4,
+            "color":"black"
+         },
+         "encoding":{
+            "x":{
+               "datum":{
+                  "year":2020,
+                  "month":"apr",
+                  "date":4
+               }
+            },
+            "y":{
+               "datum":110
+            },
+            "text":{
+               "value":"Reference Date: 14/01/2020"
+            }
+         }
       }
-    },
-    {
-      "mark":{
-        "type":"text",
-        "align":"left",
-        "dy":15,
-        "dx":-4
-        },
-      "encoding": {
-        "x":{"value":400, "timeUnit":"yearmonth"},
-        "y":{"value":50},
-        "text":{"value":"Reference Date: 14/01/2020"}
-      }
-    }
-  ]
+   ]
 }
