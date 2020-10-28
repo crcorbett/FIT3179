@@ -1,0 +1,5 @@
+.bg-image {
+background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Flinders_St_Station_Melbourne._%2820484830004%29.jpg/1280px-Flinders_St_Station_Melbourne._%2820484830004%29.jpg');
+background-size: cover;
+    filter: blur(5px);
+}
