@@ -1,522 +1,674 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
-  "data":{
-      "url":"https://raw.githubusercontent.com/crcorbett/FIT3179/master/data/ped_data.json"
-    },
-  "title": {"text": "Melbourne Pedestrian Traffic", "fontSize":40, "subtitle":""},
-  "vconcat" :[
-    {  
-      "hconcat": [
-    {
-      "layer":[
-        {
-      "title":"July 2019",
-      "height":280,
-      "width":450,
-      "data":{
-      "url":"https://raw.githubusercontent.com/crcorbett/FIT3179/master/data/map/buildings.json",
-      "format":{
-        "type": "topojson",
-        "feature":"polyMap"
-      }
-      },
-      "mark":{
-        "type":"geoshape",
-        "color":"#eee"
-      }
-    },
-    {
-      "data":{
-      "url":"https://raw.githubusercontent.com/crcorbett/FIT3179/master/data/map/parks.json",
-      "format":{
-        "type": "topojson",
-        "feature":"polyMap"
-      }
-      },
-      "mark":{
-        "type":"geoshape",
-        "color":"rgb(239,244,225)"
-        }
-    },
-    {
-      "data":{
-      "url":"https://raw.githubusercontent.com/crcorbett/FIT3179/master/data/map/rivers.json",
-      "format":{
-        "type": "topojson",
-        "feature":"lineMap"
-      }
-      },
-      "mark":{
-        "type":"geoshape",
-        "color":"rgb(226,237,246)",
-        "strokeWidth":22,
-        "filled":null
-        }
-    },
-      {
-        "selection": {
-          "Date": {
-            "type": "single",
-            "fields": [
-              "Mdate"
-            ],
-            "init": {
-              "Mdate": 21
-            },
-            "bind": {
-              "Mdate": {
-                "input": "range",
-                "min": 1,
-                "max": 31,
-                "step": 1,
-                "name": "Day"
-              }
-            }
-          },
-          "Hour": {
-            "type": "single",
-            "fields": [
-              "Hour"
-            ],
-            "init": {
-              "Hour": 17
-            },
-            "bind": {
-              "Hour":{
-                "input": "range",
-                "min": 0,
-                "max": 23,
-                "step":1,
-                "type": "nominal",
-                "name": "Hour"
-              }
-            }
-          },
-          "Location":{
-            "type":"multi",
-            "fields":["Location"],
-            "on":"click",
-            "empty": "all",
-            "init": {"Location":["Collins Place (North)", "Bourke St Bridge", "Southbank", "Melbourne Central", "The Arts Centre", "Collins St (North)"]}
-          }
-        },
-        "transform": [
-          {
-            "filter": {
-              "selection": "Date"
-            }
-          },
-          {
-            "filter":"datum.Year == 2019"
-          },
-          {
-            "filter": {
-              "selection": "Hour"
-            }
-          }
-        ],
-        "mark": {
-          "type": "circle",
-          "stroke":"white",
-          "opacity":1
-        },
-        "encoding": {
-          "longitude": {
-            "field": "longitude",
-            "type": "quantitative"
-          },
-          "latitude": {
-            "field": "latitude",
-            "type": "quantitative"
-          },
-          "color": {
-            "condition":{
-              "selection":"Location",
-              "field":"Normalised",
-              "type": "quantitative",
-              "scale": {
-                "scheme": "reds",
-                "domain":[0,1]
-              },
-              "legend": {
-                "orient": "right"
-              }
-            },
-            "value":"grey"
-          },
-          "size": {
-            "condition":{
-              "selection":"Location",
-              "value":200
-            },
-            "value":100
-          },
-            "tooltip":[
-              {"field":"Location"},
-              {"field":"Day"},
-              {"field":"Year"},
-              {"field":"Normalised"},
-              {"field":"Count"}
-              ]
-        }
-      },
-      {
-        "transform": [
-          {
-            "filter": {
-              "selection": "Date"
-            }
-          },
-          {
-            "filter":"datum.Year == 2019"
-          },
-          {
-            "filter": {
-              "selection": "Hour"
-            }
-          },
-          {
-      "filter": {
-        "selection": "Location"
-      }
-    },
-          {
-            "filter":"datum.Location == 'The Arts Centre' || datum.Location == 'Melbourne Central' || datum.Location == 'Southbank' || datum.Location == 'Bourke St Bridge' || datum.Location == 'Collins St (North)' || datum.Location == 'Collins Place (North)' || datum.Location == 'Southern Cross Station' || datum.Location == 'Princes Bridge' || datum.Location == 'Melbourne Convention Exhibition Centre' || datum.Location == 'Swanston St - RMIT Building 14'"
-          }
-          
-        ],
-        "mark": {
-          "type": "text",
-          "align": "left", 
-          "baseline": "middle",
-          "color": "black", 
-          "dx": 10,
-          "dy" : -3, 
-          "fontSize": 7
-        },
-        "encoding": {
-          "text":{"field":"Location", "type":"nominal"},
-          "latitude": {"field":"latitude", "type": "quantitative"},
-          "longitude": {"field":"longitude", "type": "quantitative"},
-            "tooltip":[
-              {"field":"Location"},
-              {"field":"Day"},
-              {"field":"Year"},
-              {"field":"Normalised"},
-              {"field":"Count"}
-            ]
-    
-        }
-      }
-      ]
-    },
-    {
-      "layer":[
-      {
-        "title":"July 2020",
-      "data":{
-      "url":"https://raw.githubusercontent.com/crcorbett/FIT3179/master/data/map/buildings.json",
-      "format":{
-        "type": "topojson",
-        "feature":"polyMap"
-      }
-      },
-      "mark":{
-        "type":"geoshape",
-        "color":"#eee"
-        }
-    },
-    {
-      "data":{
-      "url":"https://raw.githubusercontent.com/crcorbett/FIT3179/master/data/map/parks.json",
-      "format":{
-        "type": "topojson",
-        "feature":"polyMap"
-      }
-      },
-      "mark":{
-        "type":"geoshape",
-        "color":"rgb(239,244,225)"
-        }
-    },
-    {
-      "data":{
-      "url":"https://raw.githubusercontent.com/crcorbett/FIT3179/master/data/map/rivers.json",
-      "format":{
-        "type": "topojson",
-        "feature":"lineMap"
-      }
-      },
-      "mark":{
-        "type":"geoshape",
-        "color":"rgb(226,237,246)",
-        "strokeWidth":22,
-        "filled":false
-        }
-    },
-      {
-        "selection": {
-          "Location":{
-            "type":"single",
-            "fields":["Location"],
-            "on":"click",
-            "empty": "all"
-          }
-        },
-        "transform": [
-          {
-            "filter": {
-              "selection": "Date"
-            }
-          },
-          {
-            "filter":"datum.Year == 2020"
-          },
-          {
-            "filter": {
-              "selection": "Hour"
-            }
-          }
-        ],
-        "mark": {
-          "type": "circle",
-          "opacity":1,
-          "stroke":"white"
-        },
-        "encoding": {
-          "longitude": {
-            "field": "longitude",
-            "type": "quantitative"
-          },
-          "latitude": {
-            "field": "latitude",
-            "type": "quantitative"
-          },
-          "color": {
-            "condition":{
-              "selection":"Location",
-              "field":"Normalised",
-              "type": "quantitative",
-              "scale": {
-                "scheme": "reds"
-              },
-              "legend": {
-                "title": ["Normalised","Pedestrian Count"],
-                "titleAlign":"center",
-                "orient": "right"
-              }
-            },
-            "value":"grey"
-          },
-          "size": {
-            "condition":{
-              "selection":"Location",
-              "value":200
-            },
-            "value":100
-          },
-            "tooltip":[
-              {"field":"Location"},
-              {"field":"Day"},
-              {"field":"Year"},
-              {"field":"Normalised"},
-              {"field":"Count"}
-              ]
-        }
-      },
-      {
-        "transform": [
-          {
-            "filter": {
-              "selection": "Date"
-            }
-          },
-          {
-            "filter":"datum.Year == 2020"
-          },
-          {
-            "filter": {
-              "selection": "Hour"
-            }
-          },
-          {
-            "filter":"datum.Location == 'The Arts Centre' || datum.Location == 'Melbourne Central' || datum.Location == 'Southbank' || datum.Location == 'Bourke St Bridge' || datum.Location == 'Collins St (North)' || datum.Location == 'Collins Place (North)' || datum.Location == 'Southern Cross Station' || datum.Location == 'Princes Bridge' || datum.Location == 'Melbourne Convention Exhibition Centre' || datum.Location == 'Swanston St - RMIT Building 14'"
-          },
-          {
-      "filter": {
-        "selection": "Location"
-      }
-    }
-        ],
-        "mark": {
-          "type": "text",
-          "align": "left", 
-          "baseline": "middle",
-          "color": "black", 
-          "dx": 10,
-          "dy" : -3, 
-          "fontSize": 7
-        },
-        "encoding": {
-          "text":{"field":"Location", "type":"nominal"},
-          "latitude": {"field":"latitude", "type": "quantitative"},
-          "longitude": {"field":"longitude", "type": "quantitative"},
-            "tooltip":[
-              {"field":"Location"},
-              {"field":"Day"},
-              {"field":"Year"},
-              {"field":"Normalised"},
-              {"field":"Count"}
-              ]
-        }
-      }
-      ]
-    }
-  ]
+  "data": {
+    "url": "https://raw.githubusercontent.com/crcorbett/FIT3179/master/data/ped_data.json"
   },
-  {
-    "layer": [ 
+  "title": {
+    "text": "Pedestrian Traffic",
+    "fontSize": 50,
+    "subtitle": "Melbourne CBD, normalised to 2019 pedestrian traffic",
+    "align": "center",
+    "dx": 450,
+    "dy": -15
+  },
+  "vconcat": [
     {
-      "title":"Pedestrian count daily",
-    "transform": [
-      {
-            "filter": {
-              "selection": "Date"
+      "hconcat": [
+        {
+          "layer": [
+            {
+              "title": "July 2019",
+              "height": 250,
+              "width": 400,
+              "data": {
+                "url": "https://raw.githubusercontent.com/crcorbett/FIT3179/master/data/map/buildings.json",
+                "format": {
+                  "type": "topojson",
+                  "feature": "polyMap"
+                }
+              },
+              "mark": {
+                "type": "geoshape",
+                "color": "#eee"
+              }
+            },
+            {
+              "data": {
+                "url": "https://raw.githubusercontent.com/crcorbett/FIT3179/master/data/map/parks.json",
+                "format": {
+                  "type": "topojson",
+                  "feature": "polyMap"
+                }
+              },
+              "mark": {
+                "type": "geoshape",
+                "color": "rgb(239,244,225)"
+              }
+            },
+            {
+              "data": {
+                "url": "https://raw.githubusercontent.com/crcorbett/FIT3179/master/data/map/rivers.json",
+                "format": {
+                  "type": "topojson",
+                  "feature": "lineMap"
+                }
+              },
+              "mark": {
+                "type": "geoshape",
+                "color": "rgb(226,237,246)",
+                "strokeWidth": 22,
+                "filled": null
+              }
+            },
+            {
+              "selection": {
+                "Date": {
+                  "type": "single",
+                  "fields": [
+                    "Mdate"
+                  ],
+                  "init": {
+                    "Mdate": 21
+                  },
+                  "bind": {
+                    "Mdate": {
+                      "input": "range",
+                      "min": 1,
+                      "max": 31,
+                      "step": 1,
+                      "name": "Day"
+                    }
+                  }
+                },
+                "Hour": {
+                  "type": "single",
+                  "fields": [
+                    "Hour"
+                  ],
+                  "init": {
+                    "Hour": 17
+                  },
+                  "bind": {
+                    "Hour": {
+                      "input": "range",
+                      "min": 0,
+                      "max": 23,
+                      "step": 1,
+                      "type": "nominal",
+                      "name": "Hour"
+                    }
+                  }
+                },
+                "Location": {
+                  "type": "multi",
+                  "fields": [
+                    "Location"
+                  ],
+                  "on": "click",
+                  "empty": "all",
+                  "init": {
+                    "Location": [
+                      "Collins Place (North)",
+                      "Bourke St Bridge",
+                      "Southbank",
+                      "Melbourne Central",
+                      "The Arts Centre",
+                      "Collins St (North)"
+                    ]
+                  }
+                }
+              },
+              "transform": [
+                {
+                  "filter": {
+                    "selection": "Date"
+                  }
+                },
+                {
+                  "filter": "datum.Year == 2019"
+                },
+                {
+                  "filter": {
+                    "selection": "Hour"
+                  }
+                }
+              ],
+              "mark": {
+                "type": "circle",
+                "stroke": "white",
+                "opacity": 1
+              },
+              "encoding": {
+                "longitude": {
+                  "field": "longitude",
+                  "type": "quantitative"
+                },
+                "latitude": {
+                  "field": "latitude",
+                  "type": "quantitative"
+                },
+                "color": {
+                  "condition": {
+                    "selection": "Location",
+                    "field": "Normalised",
+                    "type": "quantitative",
+                    "scale": {
+                      "scheme": "reds",
+                      "domain": [
+                        0,
+                        1
+                      ]
+                    },
+                    "legend": {
+                      "orient": "right"
+                    }
+                  },
+                  "value": "grey"
+                },
+                "size": {
+                  "condition": {
+                    "selection": "Location",
+                    "value": 200
+                  },
+                  "value": 100
+                },
+                "tooltip": [
+                  {
+                    "field": "Location"
+                  },
+                  {
+                    "field": "Day"
+                  },
+                  {
+                    "field": "Year"
+                  },
+                  {
+                    "field": "Normalised"
+                  },
+                  {
+                    "field": "Count"
+                  }
+                ]
+              }
+            },
+            {
+              "transform": [
+                {
+                  "filter": {
+                    "selection": "Date"
+                  }
+                },
+                {
+                  "filter": "datum.Year == 2019"
+                },
+                {
+                  "filter": {
+                    "selection": "Hour"
+                  }
+                },
+                {
+                  "filter": {
+                    "selection": "Location"
+                  }
+                },
+                {
+                  "filter": "datum.Location == 'The Arts Centre' || datum.Location == 'Melbourne Central' || datum.Location == 'Southbank' || datum.Location == 'Bourke St Bridge' || datum.Location == 'Collins St (North)' || datum.Location == 'Collins Place (North)' || datum.Location == 'Southern Cross Station' || datum.Location == 'Princes Bridge' || datum.Location == 'Melbourne Convention Exhibition Centre' || datum.Location == 'Swanston St - RMIT Building 14'"
+                }
+              ],
+              "mark": {
+                "type": "text",
+                "align": "left",
+                "baseline": "middle",
+                "color": "black",
+                "dx": 10,
+                "dy": -3,
+                "fontSize": 7
+              },
+              "encoding": {
+                "text": {
+                  "field": "Location",
+                  "type": "nominal"
+                },
+                "latitude": {
+                  "field": "latitude",
+                  "type": "quantitative"
+                },
+                "longitude": {
+                  "field": "longitude",
+                  "type": "quantitative"
+                },
+                "tooltip": [
+                  {
+                    "field": "Location"
+                  },
+                  {
+                    "field": "Day"
+                  },
+                  {
+                    "field": "Year"
+                  },
+                  {
+                    "field": "Normalised"
+                  },
+                  {
+                    "field": "Count"
+                  }
+                ]
+              }
             }
-          },
+          ]
+        },
+        {
+          "layer": [
+            {
+              "title": "July 2020",
+              "height": 250,
+              "width": 400,
+              "data": {
+                "url": "https://raw.githubusercontent.com/crcorbett/FIT3179/master/data/map/buildings.json",
+                "format": {
+                  "type": "topojson",
+                  "feature": "polyMap"
+                }
+              },
+              "mark": {
+                "type": "geoshape",
+                "color": "#eee"
+              }
+            },
+            {
+              "data": {
+                "url": "https://raw.githubusercontent.com/crcorbett/FIT3179/master/data/map/parks.json",
+                "format": {
+                  "type": "topojson",
+                  "feature": "polyMap"
+                }
+              },
+              "mark": {
+                "type": "geoshape",
+                "color": "rgb(239,244,225)"
+              }
+            },
+            {
+              "data": {
+                "url": "https://raw.githubusercontent.com/crcorbett/FIT3179/master/data/map/rivers.json",
+                "format": {
+                  "type": "topojson",
+                  "feature": "lineMap"
+                }
+              },
+              "mark": {
+                "type": "geoshape",
+                "color": "rgb(226,237,246)",
+                "strokeWidth": 22,
+                "filled": false
+              }
+            },
+            {
+              "selection": {
+                "Location": {
+                  "type": "single",
+                  "fields": [
+                    "Location"
+                  ],
+                  "on": "click",
+                  "empty": "all"
+                }
+              },
+              "transform": [
+                {
+                  "filter": {
+                    "selection": "Date"
+                  }
+                },
+                {
+                  "filter": "datum.Year == 2020"
+                },
+                {
+                  "filter": {
+                    "selection": "Hour"
+                  }
+                }
+              ],
+              "mark": {
+                "type": "circle",
+                "opacity": 1,
+                "stroke": "white"
+              },
+              "encoding": {
+                "longitude": {
+                  "field": "longitude",
+                  "type": "quantitative"
+                },
+                "latitude": {
+                  "field": "latitude",
+                  "type": "quantitative"
+                },
+                "color": {
+                  "condition": {
+                    "selection": "Location",
+                    "field": "Normalised",
+                    "type": "quantitative",
+                    "scale": {
+                      "scheme": "reds"
+                    },
+                    "legend": {
+                      "title": [
+                        "Normalised",
+                        "Pedestrian Count"
+                      ],
+                      "titleAlign": "center",
+                      "orient": "right"
+                    }
+                  },
+                  "value": "grey"
+                },
+                "size": {
+                  "condition": {
+                    "selection": "Location",
+                    "value": 200
+                  },
+                  "value": 100
+                },
+                "tooltip": [
+                  {
+                    "field": "Location"
+                  },
+                  {
+                    "field": "Day"
+                  },
+                  {
+                    "field": "Year"
+                  },
+                  {
+                    "field": "Normalised"
+                  },
+                  {
+                    "field": "Count"
+                  }
+                ]
+              }
+            },
+            {
+              "transform": [
+                {
+                  "filter": {
+                    "selection": "Date"
+                  }
+                },
+                {
+                  "filter": "datum.Year == 2020"
+                },
+                {
+                  "filter": {
+                    "selection": "Hour"
+                  }
+                },
+                {
+                  "filter": "datum.Location == 'The Arts Centre' || datum.Location == 'Melbourne Central' || datum.Location == 'Southbank' || datum.Location == 'Bourke St Bridge' || datum.Location == 'Collins St (North)' || datum.Location == 'Collins Place (North)' || datum.Location == 'Southern Cross Station' || datum.Location == 'Princes Bridge' || datum.Location == 'Melbourne Convention Exhibition Centre' || datum.Location == 'Swanston St - RMIT Building 14'"
+                },
+                {
+                  "filter": {
+                    "selection": "Location"
+                  }
+                }
+              ],
+              "mark": {
+                "type": "text",
+                "align": "left",
+                "baseline": "middle",
+                "color": "black",
+                "dx": 10,
+                "dy": -3,
+                "fontSize": 7
+              },
+              "encoding": {
+                "text": {
+                  "field": "Location",
+                  "type": "nominal"
+                },
+                "latitude": {
+                  "field": "latitude",
+                  "type": "quantitative"
+                },
+                "longitude": {
+                  "field": "longitude",
+                  "type": "quantitative"
+                },
+                "tooltip": [
+                  {
+                    "field": "Location"
+                  },
+                  {
+                    "field": "Day"
+                  },
+                  {
+                    "field": "Year"
+                  },
+                  {
+                    "field": "Normalised"
+                  },
+                  {
+                    "field": "Count"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
     {
-      "filter": {
-        "selection": "Location"
-      }
+      "layer": [
+        {
+          "title": "Pedestrian count daily",
+          "transform": [
+            {
+              "filter": {
+                "selection": "Date"
+              }
+            },
+            {
+              "filter": {
+                "selection": "Location"
+              }
+            }
+          ],
+          "width": 800,
+          "mark": "line",
+          "encoding": {
+            "x": {
+              "field": "Hour",
+              "type": "ordinal",
+              "axis": {
+                "tickBand": "extent"
+              }
+            },
+            "y": {
+              "aggregate": "sum",
+              "field": "Count",
+              "type": "quantitative",
+              "axis": {
+                "title": "Total Pedestrians"
+              }
+            },
+            "color": {
+              "field": "Year",
+              "scale": {
+                "range": [
+                  "#de2d26",
+                  "#fc9272",
+                  "#d1d1d1"
+                ]
+              }
+            },
+            "opacity": {
+              "value": 0.95
+            }
+          }
+        },
+        {
+          "transform": [
+            {
+              "filter": {
+                "selection": "Hour"
+              }
+            },
+            {
+              "filter": {
+                "selection": "Date"
+              }
+            },
+            {
+              "filter": {
+                "selection": "Location"
+              }
+            }
+          ],
+          "mark": "rule",
+          "encoding": {
+            "x": {
+              "field": "Hour"
+            },
+            "color": {
+              "value": "black"
+            },
+            "opacity": {
+              "value": 0.5
+            },
+            "strokeDash": {
+              "value": [
+                4,
+                4
+              ]
+            }
+          }
+        },
+        {
+          "transform": [
+            {
+              "filter": {
+                "selection": "Date"
+              }
+            },
+            {
+              "filter": {
+                "selection": "Hour"
+              }
+            },
+            {
+              "filter": {
+                "selection": "Location"
+              }
+            }
+          ],
+          "mark": "circle",
+          "encoding": {
+            "x": {
+              "field": "Hour"
+            },
+            "y": {
+              "field": "Count",
+              "aggregate": "sum"
+            },
+            "color": {
+              "field": "Year"
+            },
+            "size": {
+              "value": 100
+            }
+          }
+        },
+        {
+          "transform": [
+            {
+              "filter": {
+                "selection": "Date"
+              }
+            },
+            {
+              "filter": {
+                "selection": "Hour"
+              }
+            },
+            {
+              "filter": {
+                "selection": "Location"
+              }
+            }
+          ],
+          "mark": {
+            "type": "text",
+            "align": "left",
+            "dx": 10,
+            "dy": -10
+          },
+          "encoding": {
+            "x": {
+              "field": "Hour"
+            },
+            "color": {
+              "field": "Year"
+            },
+            "y": {
+              "field": "Count",
+              "aggregate": "sum"
+            },
+            "text": {
+              "field": "Count",
+              "aggregate": "sum"
+            },
+            "size": {
+              "value": 15
+            }
+          }
+        },
+        {
+          "transform": [
+            {
+              "filter": {
+                "selection": "Date"
+              }
+            },
+            {
+              "filter": {
+                "selection": "Location"
+              }
+            },
+            {
+              "filter": "datum.Year == 2019"
+            }
+          ],
+          "mark": {
+            "type": "line",
+            "strokeWidth": 2,
+            "opacity": 1
+          },
+          "encoding": {
+            "x": {
+              "field": "Hour"
+            },
+            "y": {
+              "field": "day_hour_mean",
+              "type": "quantitative",
+              "aggregate": "sum"
+            },
+            "color": {
+              "condition": {
+                "selection": "Location"
+              },
+              "datum": "2019 Avg."
+            },
+            "strokeDash": {
+              "value": [
+                2,
+                2
+              ]
+            }
+          }
+        }
+      ]
     }
   ],
-    "width": 800,
-    "mark": "line",
-    "encoding": {
-      "x":{"field":"Hour", "type": "ordinal"},
-      "y":{"aggregate":"sum","field":"Count", "type": "quantitative", "axis":   {"title":"Total Pedestrians"}},
-      "color":{"field":"Year", "scale": {"range": ["#de2d26", "#fc9272", "#d1d1d1"]}},
-      "opacity":{"value":0.95}
-    }
-    },
-    {
-      "transform": [
-        {
-          "filter": {
-            "selection": "Hour"
-            }
-          },
-          {
-            "filter": {
-              "selection": "Date"
-            }
-          },
-          {
-          "filter": {
-            "selection": "Location"
-          }
-        }
-      ],
-      "mark":"rule",
-      "encoding": {
-        "x":{"field":"Hour"},
-        "color":{"value":"black"},
-        "opacity":{"value":0.5},
-        "strokeDash":{"value":[4,4]}
-      }
-    },
-    {
-      "transform": [
-        {
-            "filter": {
-              "selection": "Date"
-            }
-          },
-          {
-            "filter": {
-              "selection": "Hour"
-            }
-          },
-        {
-          "filter": {
-            "selection": "Location"
-          }
-        }
-      ],
-      "mark":"circle",
-      "encoding": {
-        "x":{"field":"Hour"},
-        "y":{"field":"Count", "aggregate":"sum"},
-        "color":{"field":"Year"},
-        "size":{"value":100}
-      }
-    },
-    {
-      "transform": [
-        {
-            "filter": {
-              "selection": "Date"
-            }
-          },
-          {
-            "filter": {
-              "selection": "Hour"
-            }
-          },
-        {
-          "filter": {
-            "selection": "Location"
-          }
-        }
-      ],
-      "mark":{
-        "type":"text",
-        "align":"left",
-        "dx":10,
-        "dy":-10
-        },
-      "encoding": {
-        "x":{"field":"Hour"},
-        "color":{"field":"Year"},
-        "y":{"field":"Count", "aggregate":"sum"},
-        "text":{"field":"Count", "aggregate":"sum"},
-        "size":{"value":15}
-      }
-    },
-    {
-      "transform": [
-        {
-            "filter": {
-              "selection": "Date"
-            }
-          },
-  
-        {
-          "filter": {
-            "selection": "Location"
-          }
-        },
-        {
-            "filter":"datum.Year == 2019"
-          }
-      ],
-      "mark":{
-        "type":"line",
-        "strokeWidth":2,
-        "opacity":1
-        },
-      "encoding": {
-        "x":{"field":"Hour"},
-        "y":{"field":"day_hour_mean","type":"quantitative", "aggregate":"sum"},
-        "color":{
-          "condition":{"selection":"Location"},
-          "datum":"2019 Avg."
-          },
-        "strokeDash":{"value":[2,2]}
-      }
-    }
-    ]
-  }
-    
-    ]
+  "center": true
 }
