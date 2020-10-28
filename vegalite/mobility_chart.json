@@ -1,7 +1,7 @@
 {
    "$schema":"https://vega.github.io/schema/vega-lite/v4.json",
-   "width":"container",
-   "height":"container",
+   "width":410,
+   "height":300,
    "title":{
       "text":"Mobility",
       "fontSize":50,
@@ -269,21 +269,19 @@
       {
          "mark":{
             "type":"text",
-            "align":"left",
-            "dy":15,
-            "dx":-4,
+            "align":"center",
             "color":"black"
          },
          "encoding":{
             "x":{
                "datum":{
                   "year":2020,
-                  "month":"apr",
+                  "month":"jun",
                   "date":4
                }
             },
             "y":{
-               "datum":110
+               "datum":105
             },
             "text":{
                "value":"Reference Date: 14/01/2020"
