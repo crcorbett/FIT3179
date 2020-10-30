@@ -1,10 +1,14 @@
 {
    "$schema":"https://vega.github.io/schema/vega-lite/v4.json",
    "title":{
-      "text":"Melbourne Air Quality (SO2)",
-      "fontSize":24,
-      "align":"left",
-      "dx":240
+      "text": "Air Quality",
+      "fontSize": 24,
+      "align": "center",
+      "dx": 385,
+      "subtitle": [
+         "SO2 ppm",
+         "Melbourne CBD"
+      ]
    },
    "facet":{
       "row":{
@@ -99,16 +103,20 @@
                      "labelFontStyle":"bold"
                   }
                },
-               "color":{
-                  "field":"normalise",
-                  "type":"quantitative",
-                  "scale":{
-                     "scheme":"reds",
-                     "domainMid":0.2
+               "color": {
+                  "field": "median",
+                  "type": "quantitative",
+                  "scale": {
+                     "scheme": "reds",
+                     "domainMid": 1.5
                   },
-                  "legend":{
-                     "title":"2019 Rate",
-                     "labelOpacity":0
+                  "legend": {
+                     "title": [
+                        "Median",
+                        "ppm"
+                     ],
+                     "labelOpacity": 1,
+                     "titleAlign": "left"
                   }
                },
                "stroke":{
