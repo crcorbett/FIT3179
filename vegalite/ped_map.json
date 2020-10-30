@@ -262,8 +262,6 @@
           "layer": [
             {
               "title": "July 2020",
-              "height": 250,
-              "width": 400,
               "data": {
                 "url": "https://raw.githubusercontent.com/crcorbett/FIT3179/master/data/map/buildings.json",
                 "format": {
@@ -522,25 +520,6 @@
               }
             }
           ],
-          "mark": "rule",
-          "encoding": {
-            "x": {
-              "field": "Hour"
-            },
-            "color": {
-              "value": "black"
-            },
-            "opacity": {
-              "value": 0.5
-            },
-            "strokeDash": {
-              "value": [
-                4,
-                4
-              ]
-            }
-          }
-        },
         {
           "transform": [
             {
