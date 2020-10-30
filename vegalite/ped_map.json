@@ -1,7 +1,12 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
   "data": {
-    "url": "https://raw.githubusercontent.com/crcorbett/FIT3179/master/data/ped_data.json"
+    "url": "https://raw.githubusercontent.com/crcorbett/FIT3179/master/data/ped_data.json",
+    "format": {
+      "parse": {
+        "Date_Time": "utc:'%Y-%m-%d %H:%M:%S'"
+      }
+    }
   },
   "title": {
     "text": "Pedestrian Traffic",
@@ -192,16 +197,34 @@
                     "field": "Location"
                   },
                   {
-                    "field": "Day"
+                    "field": "Count",
+                    "title": "Total Pedestrians"
                   },
                   {
-                    "field": "Year"
+                    "field": "day_hour_mean",
+                    "aggregate": "mean",
+                    "title": "2019 Average",
+                    "format": ".2f"
                   },
                   {
-                    "field": "Normalised"
+                    "field": "Normalised",
+                    "aggregate": "mean",
+                    "title": "Normalised value"
                   },
                   {
-                    "field": "Count"
+                    "field": "Date_Time",
+                    "type": "temporal",
+                    "title": "Date"
+                  },
+                  {
+                    "field": "Date_Time",
+                    "type": "temporal",
+                    "title": "Day",
+                    "timeUnit": "day"
+                  },
+                  {
+                    "field": "Hour",
+                    "type": "ordinal"
                   }
                 ]
               }
@@ -257,16 +280,34 @@
                     "field": "Location"
                   },
                   {
-                    "field": "Day"
+                    "field": "Count",
+                    "title": "Total Pedestrians"
                   },
                   {
-                    "field": "Year"
+                    "field": "day_hour_mean",
+                    "aggregate": "mean",
+                    "title": "2019 Average",
+                    "format": ".2f"
                   },
                   {
-                    "field": "Normalised"
+                    "field": "Normalised",
+                    "aggregate": "mean",
+                    "title": "Normalised value"
                   },
                   {
-                    "field": "Count"
+                    "field": "Date_Time",
+                    "type": "temporal",
+                    "title": "Date"
+                  },
+                  {
+                    "field": "Date_Time",
+                    "type": "temporal",
+                    "title": "Day",
+                    "timeUnit": "day"
+                  },
+                  {
+                    "field": "Hour",
+                    "type": "ordinal"
                   }
                 ]
               }
@@ -388,16 +429,34 @@
                     "field": "Location"
                   },
                   {
-                    "field": "Day"
+                    "field": "Count",
+                    "title": "Total Pedestrians"
                   },
                   {
-                    "field": "Year"
+                    "field": "day_hour_mean",
+                    "aggregate": "mean",
+                    "title": "2019 Average",
+                    "format": ".2f"
                   },
                   {
-                    "field": "Normalised"
+                    "field": "Normalised",
+                    "aggregate": "mean",
+                    "title": "Normalised value"
                   },
                   {
-                    "field": "Count"
+                    "field": "Date_Time",
+                    "type": "temporal",
+                    "title": "Date"
+                  },
+                  {
+                    "field": "Date_Time",
+                    "type": "temporal",
+                    "title": "Day",
+                    "timeUnit": "day"
+                  },
+                  {
+                    "field": "Hour",
+                    "type": "ordinal"
                   }
                 ]
               }
@@ -453,17 +512,34 @@
                     "field": "Location"
                   },
                   {
-                    "field": "Day"
+                    "field": "Count",
+                    "title": "Total Pedestrians"
                   },
                   {
-                    "field": "Year"
+                    "field": "day_hour_mean",
+                    "aggregate": "mean",
+                    "title": "2019 Average",
+                    "format": ".2f"
                   },
                   {
                     "field": "Normalised",
-                    "title": "test"
+                    "aggregate": "mean",
+                    "title": "Normalised value"
                   },
                   {
-                    "field": "Count"
+                    "field": "Date_Time",
+                    "type": "temporal",
+                    "title": "Date"
+                  },
+                  {
+                    "field": "Date_Time",
+                    "type": "temporal",
+                    "title": "Day",
+                    "timeUnit": "day"
+                  },
+                  {
+                    "field": "Hour",
+                    "type": "ordinal"
                   }
                 ]
               }
@@ -535,7 +611,8 @@
               {
                 "field": "day_hour_mean",
                 "aggregate": "mean",
-                "title": "2019 Average"
+                "title": "2019 Average",
+                "format": ".2f"
               },
               {
                 "field": "Normalised",
@@ -543,17 +620,15 @@
                 "title": "Normalised value"
               },
               {
-                "field": "Year",
-                "type": "ordinal"
-              },
-              {
-                "field": "Month",
-                "type": "ordinal"
-              },
-              {
-                "field": "Mdate",
-                "type": "nominal",
+                "field": "Date_Time",
+                "type": "temporal",
                 "title": "Date"
+              },
+              {
+                "field": "Date_Time",
+                "type": "temporal",
+                "title": "Day",
+                "timeUnit": "day"
               },
               {
                 "field": "Hour",
@@ -607,7 +682,8 @@
               {
                 "field": "day_hour_mean",
                 "aggregate": "mean",
-                "title": "2019 Average"
+                "title": "2019 Average",
+                "format": ".2f"
               },
               {
                 "field": "Normalised",
@@ -615,17 +691,15 @@
                 "title": "Normalised value"
               },
               {
-                "field": "Year",
-                "type": "ordinal"
-              },
-              {
-                "field": "Month",
-                "type": "ordinal"
-              },
-              {
-                "field": "Mdate",
-                "type": "nominal",
+                "field": "Date_Time",
+                "type": "temporal",
                 "title": "Date"
+              },
+              {
+                "field": "Date_Time",
+                "type": "temporal",
+                "title": "Day",
+                "timeUnit": "day"
               },
               {
                 "field": "Hour",
@@ -662,7 +736,7 @@
             "x": {
               "field": "Hour"
             },
-            "color": {
+            "detail": {
               "field": "Year"
             },
             "y": {
