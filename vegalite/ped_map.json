@@ -474,7 +474,6 @@
               }
             }
           ],
-          "width": 800,
           "mark": "line",
           "encoding": {
             "x": {
