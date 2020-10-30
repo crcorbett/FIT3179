@@ -5,11 +5,14 @@
   },
   "title": {
     "text": "Pedestrian Traffic",
-    "fontSize": 50,
-    "subtitle": "Melbourne CBD, normalised to 2019 pedestrian traffic",
+    "fontSize": 25,
+    "subtitle": [
+      "Scale normalised to 2019 pedestrian traffic",
+      "Melbourne CBD"
+    ],
     "align": "center",
     "dx": 450,
-    "dy": -15
+    "dy": -30
   },
   "vconcat": [
     {
@@ -17,7 +20,13 @@
         {
           "layer": [
             {
-              "title": "July 2019",
+              "title": {
+                "text": "July 2019",
+                "subtitle": "",
+                "fontStyle": "italic",
+                "fontSize": 20,
+                "fontWeight": "lighter"
+              },
               "height": 250,
               "width": 400,
               "data": {
@@ -157,10 +166,16 @@
                       "domain": [
                         0,
                         1
-                      ]
+                      ],
+                      "domainMid": 0.3
                     },
                     "legend": {
-                      "orient": "right"
+                      "orient": "right",
+                      "title": [
+                        "Normalised",
+                        "pedestrian traffic"
+                      ],
+                      "titleAlign": "center"
                     }
                   },
                   "value": "grey"
@@ -261,7 +276,15 @@
         {
           "layer": [
             {
-              "title": "July 2020",
+              "title": {
+                "text": "July 2020",
+                "subtitle": "",
+                "fontStyle": "italic",
+                "fontSize": 20,
+                "fontWeight": "lighter"
+              },
+              "height": 250,
+              "width": 400,
               "data": {
                 "url": "https://raw.githubusercontent.com/crcorbett/FIT3179/master/data/map/buildings.json",
                 "format": {
@@ -349,14 +372,6 @@
                     "type": "quantitative",
                     "scale": {
                       "scheme": "reds"
-                    },
-                    "legend": {
-                      "title": [
-                        "Normalised",
-                        "Pedestrian Count"
-                      ],
-                      "titleAlign": "center",
-                      "orient": "right"
                     }
                   },
                   "value": "grey"
@@ -444,7 +459,8 @@
                     "field": "Year"
                   },
                   {
-                    "field": "Normalised"
+                    "field": "Normalised",
+                    "title": "test"
                   },
                   {
                     "field": "Count"
@@ -459,7 +475,12 @@
     {
       "layer": [
         {
-          "title": "Pedestrian count daily",
+          "width": 800,
+          "title": {
+            "text": "Hourly Pedestrian Count",
+            "subtitle": "By sensor location (Melbourne CBD)",
+            "subtitleFontSize": 10
+          },
           "transform": [
             {
               "filter": {
@@ -472,12 +493,17 @@
               }
             }
           ],
-          "mark": "line",
+          "mark": {
+            "type": "line",
+            "strokeWidth": 4
+          },
           "encoding": {
             "x": {
               "field": "Hour",
               "type": "ordinal",
-              "axis":{"tickBand":"extent"}
+              "axis": {
+                "tickBand": "extent"
+              }
             },
             "y": {
               "aggregate": "sum",
@@ -499,7 +525,41 @@
             },
             "opacity": {
               "value": 0.95
-            }
+            },
+            "tooltip": [
+              {
+                "field": "Count",
+                "aggregate": "sum",
+                "title": "Total Pedestrians"
+              },
+              {
+                "field": "day_hour_mean",
+                "aggregate": "mean",
+                "title": "2019 Average"
+              },
+              {
+                "field": "Normalised",
+                "aggregate": "mean",
+                "title": "Normalised value"
+              },
+              {
+                "field": "Year",
+                "type": "ordinal"
+              },
+              {
+                "field": "Month",
+                "type": "ordinal"
+              },
+              {
+                "field": "Mdate",
+                "type": "nominal",
+                "title": "Date"
+              },
+              {
+                "field": "Hour",
+                "type": "ordinal"
+              }
+            ]
           }
         },
         {
@@ -520,10 +580,13 @@
               }
             }
           ],
-          "mark": "circle",
+          "mark": {
+            "type": "circle"
+          },
           "encoding": {
             "x": {
-              "field": "Hour"
+              "field": "Hour",
+              "type": "ordinal"
             },
             "y": {
               "field": "Count",
@@ -534,7 +597,41 @@
             },
             "size": {
               "value": 100
-            }
+            },
+            "tooltip": [
+              {
+                "field": "Count",
+                "aggregate": "sum",
+                "title": "Total Pedestrians"
+              },
+              {
+                "field": "day_hour_mean",
+                "aggregate": "mean",
+                "title": "2019 Average"
+              },
+              {
+                "field": "Normalised",
+                "aggregate": "mean",
+                "title": "Normalised value"
+              },
+              {
+                "field": "Year",
+                "type": "ordinal"
+              },
+              {
+                "field": "Month",
+                "type": "ordinal"
+              },
+              {
+                "field": "Mdate",
+                "type": "nominal",
+                "title": "Date"
+              },
+              {
+                "field": "Hour",
+                "type": "ordinal"
+              }
+            ]
           }
         },
         {
