@@ -506,25 +506,6 @@
           "transform": [
             {
               "filter": {
-                "selection": "Hour"
-              }
-            },
-            {
-              "filter": {
-                "selection": "Date"
-              }
-            },
-            {
-              "filter": {
-                "selection": "Location"
-              }
-            }
-          ]
-        },
-        {
-          "transform": [
-            {
-              "filter": {
                 "selection": "Date"
               }
             },
