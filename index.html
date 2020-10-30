@@ -48,15 +48,23 @@
                             <div class="row pt-2 pb-2 justify-content-center">
                                 <div class="row">
                                     <div class="col-12">
-                                        <div id="pedestrian">
+                                        <figure class="figure">
+                                            <div id="pedestrian">
 
-                                        </div>
-                                        <script type="text/javascript">
-                                            var spec = "https://raw.githubusercontent.com/crcorbett/FIT3179/master/vegalite/ped_map.json";
-                                            vegaEmbed('#pedestrian', spec).then(function (result) {
-                                                // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-                                            }).catch(console.error);
-                                        </script>
+                                            </div>
+                                            <script type="text/javascript">
+                                                var spec = "https://raw.githubusercontent.com/crcorbett/FIT3179/master/vegalite/ped_map.json";
+                                                vegaEmbed('#pedestrian', spec).then(function (result) {
+                                                    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+                                                }).catch(console.error);
+                                            </script>
+                                        </figure>
+                                        <figure class="figure-caption text-right">
+                                            Source: <a
+                                                href="https://data.melbourne.vic.gov.au/Transport/Pedestrian-Counting-System-2009-to-Present-counts-/b2ak-trbp">
+                                            City of Melbourne - Pedestrian Counting System
+                                        </a>
+                                        </figure>
                                     </div>
                                 </div>
                             </div>
@@ -69,15 +77,23 @@
                             <hr>
                             <div class="row pt-2 pb-2 justify-content-center">
                                 <div class="col-7">
-                                    <div id="mobility">
+                                    <figure class="figure">
+                                        <div id="mobility">
 
-                                    </div>
-                                    <script type="text/javascript">
-                                        var spec = "https://raw.githubusercontent.com/crcorbett/FIT3179/master/vegalite/mobility_chart.json";
-                                        vegaEmbed('#mobility', spec).then(function (result) {
-                                            // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-                                        }).catch(console.error);
-                                    </script>
+                                        </div>
+                                        <script type="text/javascript">
+                                            var spec = "https://raw.githubusercontent.com/crcorbett/FIT3179/master/vegalite/mobility_chart.json";
+                                            vegaEmbed('#mobility', spec).then(function (result) {
+                                                // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+                                            }).catch(console.error);
+                                        </script>
+                                    </figure>
+                                    <figure class="figure-caption text-left">
+                                        Source:
+                                        <a href="https://data.melbourne.vic.gov.au/Transport/Pedestrian-Counting-System-2009-to-Present-counts-/b2ak-trbp">
+                                            Apple
+                                        </a>
+                                    </figure>
                                 </div>
                                 <div class="col-3 text-justify">
                                     <h4 class="text-right">Mobility</h4>
@@ -117,15 +133,21 @@
                                     </div>
                                     <br>
                                     <div class="">
-                                        <div id="airquality">
+                                        <figure class="figure">
+                                            <div id="airquality">
 
-                                        </div>
-                                        <script type="text/javascript">
-                                            var spec = "https://raw.githubusercontent.com/crcorbett/FIT3179/master/vegalite/airquality.json";
-                                            vegaEmbed('#airquality', spec).then(function (result) {
-                                                // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-                                            }).catch(console.error);
-                                        </script>
+                                            </div>
+                                            <script type="text/javascript">
+                                                var spec = "https://raw.githubusercontent.com/crcorbett/FIT3179/master/vegalite/airquality.json";
+                                                vegaEmbed('#airquality', spec).then(function (result) {
+                                                    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+                                                }).catch(console.error);
+                                            </script>
+                                        </figure>
+                                        <figure class="figure-caption text-right">
+                                            Source:
+                                            <a href="https://aqicn.org/data-platform/register/">AQICN</a>
+                                        </figure>
                                     </div>
                                 </div>
                             </div>
