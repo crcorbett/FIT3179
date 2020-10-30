@@ -369,12 +369,12 @@
             {
               "selection": {
                 "Location": {
-                  "type": "single",
-                  "fields": [
-                    "Location"
-                  ],
-                  "on": "click",
-                  "empty": "all"
+                   "type": "multi",
+                   "fields": [
+                      "Location"
+                   ],
+                   "on": "click",
+                   "empty": "all"
                 }
               },
               "transform": [
