@@ -68,7 +68,8 @@
             },
             "tooltip": [
                {
-                  "field": "Measure"
+                  "field": "Measure",
+                  "title": "Lockdown measure"
                },
                {
                   "field": "Start",
