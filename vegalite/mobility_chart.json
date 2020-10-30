@@ -7,7 +7,7 @@
       "fontSize": 25,
       "align": "center",
       "dy": -10,
-      "subtitle": "Reference "
+      "subtitle": "Change since January 14th, 2020"
    },
    "data": {
       "url": "https://raw.githubusercontent.com/crcorbett/FIT3179/master/data/melbourne_mobility_data.json",
