@@ -3,8 +3,6 @@
   "data": {
     "url": "https://raw.githubusercontent.com/crcorbett/FIT3179/master/data/ped_data.json"
   },
-  "height": "container",
-  "width": "container",
   "title": {
     "text": "Pedestrian Traffic",
     "fontSize": 50,
@@ -20,6 +18,8 @@
           "layer": [
             {
               "title": "July 2019",
+              "height": 250,
+              "width": 400,
               "data": {
                 "url": "https://raw.githubusercontent.com/crcorbett/FIT3179/master/data/map/buildings.json",
                 "format": {
@@ -262,6 +262,8 @@
           "layer": [
             {
               "title": "July 2020",
+              "height": 250,
+              "width": 400,
               "data": {
                 "url": "https://raw.githubusercontent.com/crcorbett/FIT3179/master/data/map/buildings.json",
                 "format": {
