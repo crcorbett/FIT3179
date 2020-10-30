@@ -45,24 +45,43 @@
    "spec":{
       "layer":[
          {
-            "width":{
-               "step":10
+            "width": {
+               "step": 10
             },
-            "height":{
-               "step":10
+            "height": {
+               "step": 10
             },
-            "mark":{
-               "type":"rect"
+            "mark": {
+               "type": "rect"
             },
-            "encoding":{
-               "x":{
-                  "field":"Date",
-                  "timeUnit":"date",
-                  "type":"ordinal",
-                  "title":"Date",
-                  "axis":{
-                     "tickOpacity":1,
-                     "tickBand":"extent"
+            "selection": {
+               "Day": {
+                  "type": "single",
+                  "fields": [
+                     "day_type"
+                  ],
+                  "bind": {
+                     "input": "select",
+                     "options": [
+                        null,
+                        "Weekday",
+                        "Weekend"
+                     ]
+                  },
+                  "init": {
+                     "day_type": "Weekday"
+                  }
+               }
+            },
+            "encoding": {
+               "x": {
+                  "field": "Date",
+                  "timeUnit": "date",
+                  "type": "ordinal",
+                  "title": "Date",
+                  "axis": {
+                     "tickOpacity": 1,
+                     "tickBand": "extent"
                   }
                },
                "y":{
@@ -95,12 +114,12 @@
                         "month":6
                      }
                   ],
-                  "axis":{
-                     "grid":false,
-                     "tickBand":"extent",
-                     "tickMinStep":100,
-                     "title":"",
-                     "labelFontStyle":"bold"
+                  "axis": {
+                     "grid": false,
+                     "tickBand": "extent",
+                     "tickMinStep": 100,
+                     "title": "",
+                     "labelFontStyle": "bold"
                   }
                },
                "color": {
@@ -129,9 +148,9 @@
                   "value":4
                },
                "opacity":{
-                  "condition":{
-                     "test":"datum.wday !='Saturday' && datum.wday !='Sunday'",
-                     "value":1
+                  "condition": {
+                     "selection": "Day",
+                     "value": 1
                   },
                   "value":0.7
                }
@@ -144,20 +163,7 @@
             "height":{
                "step":10
             },
-            "transform":[
-               {
-                  "filter":{
-                     "field":"wday",
-                     "oneOf":[
-                        "Monday",
-                        "Tuesday",
-                        "Wednesday",
-                        "Thursday",
-                        "Friday"
-                     ]
-                  }
-               }
-            ],
+
             "mark":{
                "type":"text",
                "size":8
@@ -210,11 +216,11 @@
                   "value":"black"
                },
                "opacity":{
-                  "condition":{
-                     "test":"datum.wday !='Saturday' && datum.wday !='Sunday'",
-                     "value":1
+                  "condition": {
+                     "selection": "Day",
+                     "value": 1
                   },
-                  "value":0.55
+                  "value": 0
                }
             }
          },
@@ -225,20 +231,6 @@
             "height":{
                "step":20
             },
-            "transform":[
-               {
-                  "filter":{
-                     "field":"wday",
-                     "oneOf":[
-                        "Monday",
-                        "Tuesday",
-                        "Wednesday",
-                        "Thursday",
-                        "Friday"
-                     ]
-                  }
-               }
-            ],
             "mark":{
                "type":"rect",
                "fillOpacity":0
@@ -288,8 +280,12 @@
                "stroke":{
                   "value":"black"
                },
-               "strokeOpacity":{
-                  "value":1
+               "strokeOpacity": {
+                  "condition": {
+                     "selection": "Day",
+                     "value": 1
+                  },
+                  "value": 0
                },
                "strokeWidth":{
                   "value":2
