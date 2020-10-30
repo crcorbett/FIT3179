@@ -24,8 +24,17 @@ airquality_data$Type <- as_factor(airquality_data$Type)
 # Filter to certain environmental metrics
 airquality_data <- airquality_data %>%
   filter(Type %in% c("so2")) %>%
-  mutate(day=day(Date), month=month(Date), year=year(Date), wday=weekdays(Date)) %>%
-  mutate(wday = fct_reorder(wday, wday(Date, week_start = getOption(" lubridate.week.start", 1))))
+  mutate(day = day(Date), month = month(Date), year = year(Date), wday = weekdays(Date)) %>%
+  mutate(wday = fct_reorder(wday, wday(Date, week_start = getOption(" lubridate.week.start", 1)))) %>%
+  mutate(day_type = case_when(
+    wday == 'Monday' ~ 'Weekday',
+    wday == 'Tuesday' ~ 'Weekday',
+    wday == 'Wednesday' ~ 'Weekday',
+    wday == 'Thursday' ~ 'Weekday',
+    wday == 'Friday' ~ 'Weekday',
+    wday == 'Saturday' ~ 'Weekend',
+    wday == 'Sunday' ~ 'Weekend')
+  )
 
 airquality_data <- airquality_data %>%
   group_by(Type) %>%
