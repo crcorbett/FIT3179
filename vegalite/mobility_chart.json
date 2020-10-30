@@ -65,7 +65,24 @@
                "legend": {
                   "title": "Restriction Measure"
                }
-            }
+            },
+            "tooltip": [
+               {
+                  "field": "Measure"
+               },
+               {
+                  "field": "Start",
+                  "type": "temporal",
+                  "timeUnit": "yearmonthdate",
+                  "title": "Start date"
+               },
+               {
+                  "field": "End",
+                  "type": "temporal",
+                  "timeUnit": "yearmonthdate",
+                  "title": "End date"
+               }
+            ]
          }
       },
       {
@@ -180,6 +197,7 @@
                   "format": ".1f",
                   "title": "Lower bound"
                }
+
             ]
          }
       },
@@ -203,38 +221,7 @@
                "field": "transportation_type",
                "type": "nominal",
                "title": "Transport Type"
-            },
-            "tooltip": [
-               {
-                  "field": "transportation_type",
-                  "type": "nominal",
-                  "title": "Transport type"
-               },
-               {
-                  "field": "Date",
-                  "type": "temporal",
-                  "timeUnit": "yearmonth",
-                  "title": "Date"
-               },
-               {
-                  "field": "upper_Value",
-                  "type": "quantitative",
-                  "format": ".1f",
-                  "title": "Upper bound"
-               },
-               {
-                  "field": "center_Value",
-                  "type": "quantitative",
-                  "format": ".1f",
-                  "title": "Mean"
-               },
-               {
-                  "field": "lower_Value",
-                  "type": "quantitative",
-                  "format": ".1f",
-                  "title": "Lower bound"
-               }
-            ]
+            }
          }
       },
       {
