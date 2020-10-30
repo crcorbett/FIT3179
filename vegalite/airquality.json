@@ -66,6 +66,12 @@
                         null,
                         "Weekday",
                         "Weekend"
+                     ],
+                     "name": "Select day type:",
+                     "labels": [
+                        "Select All",
+                        "Weekday",
+                        "Weekend"
                      ]
                   },
                   "init": {
@@ -84,14 +90,14 @@
                      "tickBand": "extent"
                   }
                },
-               "y":{
-                  "field":"Date",
-                  "timeUnit":"year",
-                  "type":"ordinal",
-                  "sort":[
+               "y": {
+                  "field": "Date",
+                  "timeUnit": "year",
+                  "type": "ordinal",
+                  "sort": [
                      {
-                        "year":2019,
-                        "month":4
+                        "year": 2019,
+                        "month": 4
                      },
                      {
                         "year":2020,
@@ -106,12 +112,12 @@
                         "month":5
                      },
                      {
-                        "year":2019,
-                        "month":6
+                        "year": 2019,
+                        "month": 6
                      },
                      {
-                        "year":2020,
-                        "month":6
+                        "year": 2020,
+                        "month": 6
                      }
                   ],
                   "axis": {
@@ -147,12 +153,12 @@
                "strokeWidth":{
                   "value":4
                },
-               "opacity":{
+               "opacity": {
                   "condition": {
                      "selection": "Day",
                      "value": 1
                   },
-                  "value":0.7
+                  "value": 0.7
                }
             }
          },
@@ -215,7 +221,7 @@
                   },
                   "value":"black"
                },
-               "opacity":{
+               "opacity": {
                   "condition": {
                      "selection": "Day",
                      "value": 1
@@ -272,13 +278,13 @@
                         "month":6
                      },
                      {
-                        "year":2020,
-                        "month":6
+                        "year": 2020,
+                        "month": 6
                      }
                   ]
                },
-               "stroke":{
-                  "value":"black"
+               "stroke": {
+                  "value": "black"
                },
                "strokeOpacity": {
                   "condition": {
@@ -287,8 +293,8 @@
                   },
                   "value": 0
                },
-               "strokeWidth":{
-                  "value":2
+               "strokeWidth": {
+                  "value": 2
                }
             }
          }
