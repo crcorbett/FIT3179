@@ -16,7 +16,7 @@
       "Melbourne CBD"
     ],
     "align": "center",
-    "dx": 450,
+    "dx": 385,
     "dy": -30
   },
   "vconcat": [
@@ -32,8 +32,8 @@
                 "fontSize": 20,
                 "fontWeight": "lighter"
               },
-              "height": 250,
-              "width": 400,
+              "height": 200,
+              "width": 350,
               "data": {
                 "url": "https://raw.githubusercontent.com/crcorbett/FIT3179/master/data/map/buildings.json",
                 "format": {
@@ -369,12 +369,12 @@
             {
               "selection": {
                 "Location": {
-                   "type": "multi",
-                   "fields": [
-                      "Location"
-                   ],
-                   "on": "click",
-                   "empty": "all"
+                  "type": "multi",
+                  "fields": [
+                    "Location"
+                  ],
+                  "on": "click",
+                  "empty": "all"
                 }
               },
               "transform": [
@@ -551,7 +551,7 @@
     {
       "layer": [
         {
-          "width": 800,
+          "width": 600,
           "title": {
             "text": "Hourly Pedestrian Count",
             "subtitle": "By sensor location (Melbourne CBD)",

@@ -49,26 +49,49 @@
                     <div class="card border-0 shadow-lg">
                         <div class="card-block pt-4">
                             <div class="row pt-2 pb-2 justify-content-center">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <figure class="figure text-center">
-                                            <div id="pedestrian">
-
+                                <div class="col-12">
+                                    <div class="row justify-content-center">
+                                        <div class="col-10 text-justify text-center">
+                                            <div class="justify-content-center text-justify">
+                                                <h4>Pedestrian Traffic</h4>
+                                                <p class="text-muted small">
+                                                    <i>Pedestrian counting system readings in the City of Melbourne,
+                                                        during the July period.</i></p>
+                                                <p> The restrictions placed on movement saw a dramatic decrease in the
+                                                    levels of
+                                                    <b>sulphur-dioxide </b>pollution measured in Melbourne's CBD. On
+                                                    some days,
+                                                    such as <b>June
+                                                        5</b>, the level of sulphur-dioxide recorded was over <b>17x</b>
+                                                    less in
+                                                    2020 than the level recorded the previous year. These pollutants are
+                                                    a common component of <b>car exhaust emissions</b>.
+                                                </p>
                                             </div>
-                                            <script type="text/javascript">
-                                                var spec = "https://raw.githubusercontent.com/crcorbett/FIT3179/master/vegalite/ped_map.json";
-                                                vegaEmbed('#pedestrian', spec).then(function (result) {
-                                                    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-                                                }).catch(console.error);
-                                            </script>
-                                        </figure>
-                                        <hr>
-                                        <figure class="figure-caption text-right">
-                                            Source: <a
-                                                href="https://data.melbourne.vic.gov.au/Transport/Pedestrian-Counting-System-2009-to-Present-counts-/b2ak-trbp">
-                                            City of Melbourne - Pedestrian Counting System
-                                        </a>
-                                        </figure>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-12 text-center">
+                                            <figure class="figure text-center">
+                                                <div id="pedestrian">
+
+                                                </div>
+                                                <script type="text/javascript">
+                                                    var spec = "https://raw.githubusercontent.com/crcorbett/FIT3179/master/vegalite/ped_map.json";
+                                                    vegaEmbed('#pedestrian', spec).then(function (result) {
+                                                        // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+                                                    }).catch(console.error);
+                                                </script>
+                                            </figure>
+                                            <hr>
+                                            <figure class="figure-caption text-right pr-2">
+                                                Source: <a
+                                                    href="https://data.melbourne.vic.gov.au/Transport/Pedestrian-Counting-System-2009-to-Present-counts-/b2ak-trbp">
+                                                City of Melbourne - Pedestrian Counting System
+                                            </a>
+                                            </figure>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -79,6 +102,7 @@
                         <div class="card-body pt-4">
                             <div class="row pt-2 pb-2 justify-content-center">
                                 <div class="col-7">
+                                    <hr>
                                     <figure class="figure">
                                         <div id="mobility">
 
@@ -103,7 +127,14 @@
                                     <p class="text-muted text-right small"><i>Changes to mobility in Melbourne during
                                         the period from January - October 2020.</i></p>
                                     <p>
-                                        Mobility patterns in
+                                        Mobility patterns in Melbourne have endured massive upheaval over the 2020
+                                        period. <b>Driving</b>, <b>walking</b>, and <b>transit</b> all experienced
+                                        significant decreases in mobility (as compared to January 13th, 2020). Transit
+                                        i.e. public transport, traffic has collapsed to between <b>14-41%</b> of
+                                        normal levels. This is likely the compounding effect of <b>movement
+                                        restrictions</b>,
+                                        <b>work-from-home policies</b>, and perceived fear of <b>virus transmission in
+                                        public spaces</b>.
                                     </p>
                                 </div>
                             </div>
@@ -127,7 +158,7 @@
                                             a common component of <b>car exhaust emissions</b>.
                                         </p>
                                     </div>
-                                    <br>
+                                    <hr>
                                     <div class="text-center">
                                         <figure class="figure">
                                             <div id="airquality">
