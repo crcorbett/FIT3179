@@ -84,7 +84,7 @@
                                                     var spec = "https://raw.githubusercontent.com/crcorbett/FIT3179/master/vegalite/ped_map.json";
                                                     vegaEmbed('#pedestrian', spec, opt = {
                                                         renderer: "svg",
-                                                        actions: false
+                                                        actions: true
                                                     }).then(function (result) {
                                                         // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
                                                     }).catch(console.error);
@@ -132,7 +132,7 @@
                                             var spec = "https://raw.githubusercontent.com/crcorbett/FIT3179/master/vegalite/mobility_chart.json";
                                             vegaEmbed('#mobility', spec, opt = {
                                                 renderer: "svg",
-                                                actions: false
+                                                actions: true
                                             }).then(function (result) {
                                                 // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
                                             }).catch(console.error);
@@ -177,7 +177,7 @@
                                                 var spec = "https://raw.githubusercontent.com/crcorbett/FIT3179/master/vegalite/airquality.json";
                                                 vegaEmbed('#airquality', spec, opt = {
                                                     renderer: "svg",
-                                                    actions: false
+                                                    actions: true
                                                 }).then(function (result) {
                                                     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
                                                 }).catch(console.error);
@@ -203,12 +203,12 @@
 </div>
 <script>
     window.onload = function (e) {
-        document.getElementsByTagName("svg")[0].style.width = "100%";
-        document.getElementsByTagName("svg")[0].style.height = "100%";
-        document.getElementsByTagName("svg")[1].style.width = "100%";
-        document.getElementsByTagName("svg")[1].style.height = "100%";
-        document.getElementsByTagName("svg")[2].style.width = "100%";
-        document.getElementsByTagName("svg")[2].style.height = "100%";
+        // document.getElementsByTagName("svg")[0].style.width = "100%";
+        // document.getElementsByTagName("svg")[0].style.height = "100%";
+        // document.getElementsByTagName("svg")[1].style.width = "100%";
+        // document.getElementsByTagName("svg")[1].style.height = "100%";
+        // document.getElementsByTagName("svg")[2].style.width = "100%";
+        // document.getElementsByTagName("svg")[2].style.height = "100%";
     }
 </script>
 </body>
